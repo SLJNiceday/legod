@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>充值</title>
+</head>
+
+<body style="height: 100%;" class="v6_recharge_body">
+    <div class="recharge_container" id="app" :style="{backgroundImage:'url('+ recharge_bgimg.url + ')',backgroundRepeat:'no-repeat',backgroundPosition:'center center',backgroundSize: '100% 100%'}" v-cloak>
+        <div class="v6_pc_box v6_recharge_box">
+            <!--登录状态展示的套餐-->
+            <ul class="package_box_fa" v-if="!account_out && priceList.length > 0">
+                <li class="package_box_son" :class="{'package_active':priceHoverIndex == index}" @click="clickPay(index)" v-for="(item,index) in priceList" :key="index">
+                    <!--:class="{taocan_active:priceIndex == index}"-->
+                    <div class="package_top_cell" :class="{'package_recommend':item.price_is_recommend == 1}">
+                        <p class="package_number_font">
+                            <span style="font-family: 'price'">{{item.price_title}}</span>
+                            <span style="font-size: .18rem;margin-left: -0.05rem;font-weight: 800;">{{$t("recharge.c19")}}</span>
+                        </p>
+                        <!--<p class="time_font" style="font-size: .12rem;">-->
+                            <!--{{item.price_title*60/10000 + $t("recharge.c51")}}-->
+                        <!--</p>-->
+                        <!--角标-->
+                        <!--<img :src="jiaobiao_obj.jiaobiao_url" alt="" style="position: absolute;top: 0;right: 0;width: 0.52rem;" v-if="jiaobiao_obj.is_show && item.price_is_recommend == 1 && appParam.region_code == 1">-->
+                    </div>
+                    <div class="lists_font_cen" style="text-align: center;margin-top: 0.2rem;">
+                        <p style="color:#fff;font-size: 0.2rem;font-weight: 600;">
+                            {{item.price_desc.split('/')[0]}}
+                            <span style="font-size: 0.15rem;">/{{$t("user.b147")}}</span>
+                        </p>
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;margin: 0.08rem 0;" v-text="item.price_desc" v-if="is_change_price != 1 || item.price_is_recommend != 1"></p>-->
+                        <p style="font-size: 0.12rem;color: #BDBDBD;margin: 0.08rem 0;" v-if="is_change_price == 1 && item.price_is_recommend == 1">
+                            参与人数:
+                            <span style="color: #FE6637;">{{payUserNum}}</span>
+                        </p>
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;" v-if="item.price_is_recommend != 1 || appParam.region_code == 0 || !jiaobiao_obj.is_show">{{$t("index.a41")}}</p>-->
+                        <!--限时活动描述-->
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;" v-if="jiaobiao_obj.is_show && item.price_is_recommend == 1 && appParam.region_code == 1">{{jiaobiao_obj.jiaobiao_msg}}</p>-->
+                    </div>
+                    <div style="margin: 0.1rem 0 0.2rem;line-height: 0.22rem">
+                        <span style="font-size: 0.16rem;color: #fff;vertical-align: bottom;">
+                            {{$t('recharge.c37_1')}}:
+                        </span>
+                        <span class="amount_font" style="font-size: .20rem;vertical-align: bottom;">
+                            ¥{{item.price_num - Number(item.price_num).toFixed(0) > 0 ? Number(item.price_num).toFixed(1) : Number(item.price_num).toFixed(0)}}
+                        </span>
+                        <s class="time_font" style="font-size: .19rem;vertical-align: bottom;">{{item.price_short_desc}}</s>
+                    </div>
+                    <a class="round_btn buy_btn" v-if="item.price_is_recommend != 1">{{$t("recharge.c53")}}</a>
+                    <a class="round_btn buy_btn" v-if="item.price_is_recommend == 1">{{$t("recharge.c52")+'·'+$t("recharge.c53")}}</a>
+                    <!--<img src="./images/recharge_check_icon.png" alt="" class="recherge_check_icon" style="width: 0.2rem;height: 0.2rem;" v-show="priceIndex == 0">-->
+                    <!--推荐套餐特有背景-->
+                    <img src="./images/recommend_img_top.png" class="recommend_img_top" alt="" v-if="item.price_is_recommend == 1">
+                </li>
+            </ul>
+            <!--未登录时展示的套餐-->
+            <ul class="package_box_fa" v-if="account_out">
+                <li class="package_box_son" :class="{'package_active':priceHoverIndex == index}" @click="clickPay(index)" v-for="(item,index) in temPriceList" :key="index">
+                    <!--:class="{taocan_active:priceIndex == index}"-->
+                    <div class="package_top_cell" :class="{'package_recommend':item.price_is_recommend == 1}">
+                        <p class="package_number_font">
+                            <span style="font-family: 'price'">{{item.price_title}}</span>
+                            <span style="font-size: .18rem;font-weight: 800;">{{$t("recharge.c19")}}</span>
+                        </p>
+                        <!--<p class="time_font" style="font-size: .12rem;">-->
+                            <!--{{item.price_title*60/10000 + $t("recharge.c51")}}-->
+                        <!--</p>-->
+                        <!--角标-->
+                        <!--<img :src="jiaobiao_obj.jiaobiao_url" alt="" style="position: absolute;top: 0;right: 0;width: 0.52rem;" v-if="jiaobiao_obj.is_show && item.price_is_recommend == 1 && appParam.region_code == 1">-->
+                    </div>
+                    <div class="lists_font_cen" style="text-align: center;margin-top: 0.2rem;">
+                        <p style="color:#fff;font-size: 0.2rem;font-weight: 600;">
+                            {{item.price_desc.split('/')[0]}}
+                            <span style="font-size: 0.15rem;">/{{$t("user.b147")}}</span>
+                        </p>
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;margin: 0.08rem 0;" v-text="item.price_desc" v-if="is_change_price != 1 || item.price_is_recommend != 1"></p>-->
+                        <p style="font-size: 0.12rem;color: #BDBDBD;margin: 0.08rem 0;" v-if="is_change_price == 1 && item.price_is_recommend == 1">
+                            参与人数:
+                            <span style="color: #FE6637;">{{payUserNum}}</span>
+                        </p>
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;" v-if="item.price_is_recommend != 1 || appParam.region_code == 0 || !jiaobiao_obj.is_show">{{$t("index.a41")}}</p>-->
+                        <!--限时活动描述-->
+                        <!--<p style="font-size: 0.12rem;color: #BDBDBD;" v-if="jiaobiao_obj.is_show && item.price_is_recommend == 1 && appParam.region_code == 1">{{jiaobiao_obj.jiaobiao_msg}}</p>-->
+                    </div>
+                    <div style="margin: 0.2rem 0 0.2rem;line-height: 0.22rem">
+                        <span style="font-size: 0.16rem;color: #fff;vertical-align: bottom;">
+                            {{$t('recharge.c37_1')}}:
+                        </span>
+                        <span class="amount_font" style="font-size: .20rem;vertical-align: bottom;">
+                            ¥{{item.price_num - Number(item.price_num).toFixed(0) > 0 ? Number(item.price_num).toFixed(1) : Number(item.price_num).toFixed(0)}}
+                        </span>
+                        <s class="time_font" style="font-size: .19rem;vertical-align: bottom;">{{item.price_short_desc}}</s>
+                    </div>
+                    <a class="round_btn buy_btn" v-if="item.price_is_recommend != 1">{{$t("recharge.c53")}}</a>
+                    <a class="round_btn buy_btn" v-if="item.price_is_recommend == 1">{{$t("recharge.c52")+'·'+$t("recharge.c53")}}</a>
+                    <!--<img src="./images/recharge_check_icon.png" alt="" class="recherge_check_icon" style="width: 0.2rem;height: 0.2rem;" v-show="priceIndex == 0">-->
+                    <!--推荐套餐特有背景-->
+                    <img src="./images/recommend_img_top.png" class="recommend_img_top" alt="" v-if="item.price_is_recommend == 1">
+                </li>
+            </ul>
+            <!--cdk按钮-->
+            <a class="discount_btn" @click="openCdkey">{{$t("user.b67")}}</a>
+            <!--支付弹窗-->
+            <el-dialog
+                    :visible.sync="payDialogVisible"
+                    :modal-append-to-body="false"
+                    width="90%"
+                    class="cdkey_dialog"
+                    @close="closePayDialog"
+                    center>
+                <div slot="title">
+                    <p class="paydialog_title" v-if="!payBackShow">{{$t('recharge.c2_2')}}</p>
+                    <p class="paydialog_title" v-if="payBackShow">
+                        <span class="cursor" @click="resetPayBackShow">
+                            <i class="iconfont iconic_fanhui"></i>{{$t("wallpaper.wall18")}}
+                        </span>
+                    </p>
+                </div>
+                <pay-dialog ref="payDialogCom" v-show="payDialogVisible" @changepaytype="onChangePayType" @closepaydialog="closePayDialog" :oldprice="oldPrice"
+                            :discountlist="discountList" :choosenprice="choosePrice" :zhecodetitle="zheCodeCopy" @checkdiscount="checkDiscount"
+                            @payfaild="payFaild" @paysuccess="paySuccess" :payobj="payObj"></pay-dialog>
+            </el-dialog>
+            <!--<div class="flex_sbe" v-if="!account_out">-->
+                <!--<div class="wrap_box">-->
+                    <!--<div class="left_box">-->
+                        <!--<p class="lists_font_cen default_cursor" style="text-align: center;">{{$t("recharge.c2")}}</p>-->
+                        <!--<div class="flex_row_center" style="width: 100%;margin-top: 0.06rem;">-->
+                            <!--<a class="a_alipay" :class="{'ali_hover':payType == 2}" @click="onChoosePayType(2)"></a>-->
+                            <!--<a style="margin: 0 0.2rem" class="a_wechat" :class="{'wechat_hover':payType == 1}" @click="onChoosePayType(1)"></a>-->
+                            <!--<a class="a_qqpay" :class="{'qqpay_hover':payType == 3}" @click="onChoosePayType(3)"></a>-->
+                            <!--&lt;!&ndash;<a v-if="appParam.region_code == 0" class="a_palpel" :class="{'payapl_hover':payType == 5}" @click="onChoosePayType(5)"></a>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<img src="./images/recharge_line.png" alt="">-->
+                    <!--<div class="right_box" :class="{'flex_column_center':userInfo.first_invoice_discount != 1}">-->
+                        <!--<p style="font-size: 0.12rem;color: #838383;text-align: left;padding-left: 0.15rem;width: 100%;" v-if="userInfo.first_invoice_discount != 1">{{$t("recharge.c29")}}</p>-->
+                        <!--&lt;!&ndash;首冲立减5元图片&ndash;&gt;-->
+                        <!--<img src="./images/off_5.png" alt="" style="margin-top: 0.15rem;width: 1.2rem;" v-if="userInfo.first_invoice_discount == 1">-->
+                        <!--<img src="./images/off_5_icon.png" alt="" style="margin-top: 0.3rem;margin-left: 0.15rem;" v-if="userInfo.first_invoice_discount == 1">-->
+
+                        <!--&lt;!&ndash;<input style="width: 70%;margin-top: 0.06rem;font-size: 0.12rem;" type="text" v-model="zheCode" :placeholder="$t('recharge.c30')"&ndash;&gt;-->
+                               <!--&lt;!&ndash;v-if="userInfo.first_invoice_discount != 1" class="ipt_radius">&ndash;&gt;-->
+                        <!--<el-autocomplete-->
+                                <!--class="inline-input"-->
+                                <!--v-model="zheCode"-->
+                                <!--:fetch-suggestions="querySearch"-->
+                                <!--:placeholder="$t('recharge.c30')"-->
+                                <!--@select="checkDiscount"-->
+                                <!--width="70%"-->
+                                <!--v-if="userInfo.first_invoice_discount != 1"-->
+                        <!--&gt;</el-autocomplete>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="check_box">-->
+                    <!--<a class="public_btn" :class="{'uncheck_btn':!serviceAgreen}" @click="clickPay" style="border-radius: 1rem;font-size: 0.14rem">-->
+                        <!--{{$t("recharge.c3")}}-->
+                    <!--</a>-->
+                    <!--<div class="protocol_box" @click="serviceAgreen = !serviceAgreen">-->
+                        <!--<div class="ipt_box" :class="{'service_agreen': serviceAgreen}">-->
+                            <!--<input type="checkbox" v-model="serviceAgreen" style="display: none;">-->
+                        <!--</div>-->
+                        <!--<span style="font-size: 0.12rem;color: #666;">{{$t("recharge.c4")}}</span>-->
+                        <!--<a class="protocol_font" @click="goUserserver">{{$t("recharge.c5")}}</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--cd-key激活弹窗-->
+            <el-dialog
+                :visible.sync="cdKeyDialogVisible"
+                :modal-append-to-body="false"
+                width="50%"
+                :title="$t('user.b67')"
+                class="cdkey_dialog"
+                @close="closeCdkey"
+                center>
+                <cdkey @closecdkey="closeCdkey" ref="cdkey"></cdkey>
+            </el-dialog>
+        </div>
+    </div>
+</body>
+
+</html>

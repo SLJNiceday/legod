@@ -1,0 +1,270 @@
+{
+    "leigod": {
+        "windows": {
+            "download_url": "//update.leigod.com/soft/win/5.1.3/LeiGodSetup.5.1.3.exe"
+        },
+        "mac": {
+            "download_url": ""
+        },
+        "head_default_img_url":[
+            "images/default_avatar.png",
+            "images/avatar_01.png",
+            "images/avatar_02.png",
+            "images/avatar_03.png",
+            "images/avatar_04.png",
+            "images/avatar_05.png",
+            "images/avatar_06.png",
+            "images/avatar_07.png",
+            "images/avatar_08.png",
+            "images/avatar_09.png",
+            "images/avatar_10.png",
+            "images/avatar_11.png",
+            "images/avatar_12.png",
+            "images/avatar_13.png",
+            "images/avatar_14.png",
+            "images/avatar_15.png",
+            "images/avatar_16.png",
+            "images/avatar_17.png",
+            "images/avatar_18.png",
+            "images/avatar_19.png",
+            "images/avatar_20.png",
+            "images/avatar_21.png",
+            "images/avatar_22.png",
+            "images/avatar_23.png",
+            "images/avatar_24.png",
+            "images/avatar_25.png",
+            "images/avatar_26.png"
+        ],
+        "down_platform": {
+            "baidu": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_baidu.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "360": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_360.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "guanwang": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_25055": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_25055.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_40080": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_40080.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_274325": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_274325.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_326226": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_326226.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_756120": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_756120.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_down1": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_down1.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_zdyxz1": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_zdyxz1.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_zdyxz2": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_zdyxz2.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "3dm_zdyxz3": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_3dm_zdyxz3.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "banner": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_banner.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "tieba_apex": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_tieba_apex.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "tieba_pubglite": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_tieba_pubglite.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "tieba_taosha": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_tieba_taosha.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "youxia_download": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_youxia_download.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "ymxk-65080": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_ymxk-65080.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "ymxkshou-900350": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_ymxkshou-900350.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "baiduxxl": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_baiduxxl.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            },
+            "pubgzty": {
+                "windows":{
+                    "download_url":"//update.leigod.com/soft/win/5.1.3/LeiGodSetup_pubgzty.5.1.3.exe"
+                },
+                "mac":{
+                    "download_url": ""
+                }
+            }
+        },
+        "0": {
+            "register": {
+                "is_email": 1
+            },
+            "zh_CN": {
+                "index_news":{
+                    "new_url":"https://www.leigod.com/brandnew.html",
+                    "img_url":"https://picture.leigod.com/uploads/activity_images/2018-12-24/leigod1545652815115279.png"
+                }
+            },
+            "en": {
+                "index_news":{
+                    "new_url":"https://www.leigod.com/brandnew.html",
+                    "img_url":"https://picture.leigod.com/uploads/activity_images/2018-12-24/leigod1545652815115279.png"
+                }
+            },
+            "is_show_xianshi_activity":{
+                "is_show":false,
+                "show_msg":"APEX英雄限时特惠",
+                "start_time":"2019/3/22 12:00:00",
+                "end_time":"2019/3/31 23:59:59"
+            },
+            "jiaobiao_is_show":{
+                "is_show":false,
+                "start_time":"",
+                "end_time":"",
+                "jiaobiao_msg":"限时:4.12-4.23",
+                "jiaobiao_url":"/images/xsth.png"
+            }
+        },
+        "1": {
+            "register": {
+                "is_email": 0
+            },
+            "zh_CN": {
+                "index_news":{
+                    "new_url":"https://www.leigod.com/activity/leishenfive.html",
+                    "img_url":"/images/5.0.png"
+                }
+            },
+            "en": {
+                "index_news":{
+                    "new_url":"https://www.leigod.com/activity/leishenfive.html",
+                    "img_url":"/images/5.0.png"
+                }
+            },
+            "is_show_xianshi_activity":{
+                "is_show":false,
+                "show_msg":"APEX英雄限时特惠",
+                "start_time":"2019/3/22 12:00:00",
+                "end_time":"2019/3/31 23:59:59"
+            },
+            "jiaobiao_is_show":{
+                "is_show":false,
+                "start_time":"",
+                "end_time":"",
+                "jiaobiao_msg":"限时:4.12-4.23",
+                "jiaobiao_url":"/images/xsth.png"
+            }
+        },
+        "shouchong_banner_img": {"url":"./images/www_sc_img.png","start_time":"2019/7/30 15:30:00","end_time":"2019/8/5 15:30:00"}
+    }
+}

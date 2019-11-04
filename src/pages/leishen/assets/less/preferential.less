@@ -1,0 +1,276 @@
+/******     活动背景色       ******/
+.container_bgc {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #bb5a37;
+}
+//  。。。
+/******     活动背景色       ******/
+
+.activity_main_banner {
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -960px;
+}
+
+.activity_model_content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.model_left_content {
+  width: 1200px;
+}
+
+/**
+    构建页面每一个部分的最外层盒子，主要是帮助实现定位样式
+ */
+.model_container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.model_left_container {
+  text-align: left;
+}
+
+/**
+    套餐列表部分,水平居中对齐，对齐方式讲更具不同的活动页面进行变化
+ */
+.package_row_box {
+  width: 1200px;
+  position: absolute;
+  top: 50%;
+  margin-top: -120px;
+  left: 50%;
+  margin-left: -600px;
+}
+
+/**
+    活动公共内容区的外层盒子
+ */
+.model_outside_box {
+  width: 1200px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -600px;
+}
+
+.model_left_outside_box {
+  width: 1028px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.activity_dialog {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.activity_share_box {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150px;
+  height: 463px;
+}
+
+.fixed_share {
+  position: fixed !important;
+  top: 2% !important;
+}
+
+//提示弹窗
+.activity_dialog_notice_out {
+  width: 569px;
+  height: 321px;
+  background-color: #46201e;
+  position: absolute;
+  left: 50%;
+  top: 180px;
+  margin-left: -284px;
+  opacity: 0;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.activity_dialog_notice_in {
+  top: 200px;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.vshide{
+  visibility: hidden;
+}
+
+.activity_dialog_title_box {
+  width: 100%;
+  position: absolute;
+  top: -25px;
+  text-align: center;
+}
+
+.activity_dialog_title {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 59px;
+  top: 20px;
+  left: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.activity_dialog_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.activity_dialog_notice_msg {
+  margin-top: 120px;
+  padding: 0 20px;
+}
+
+.activity_dialog_close {
+  position: absolute;
+  cursor: pointer;
+}
+
+.content_bg {
+  background: url("../../public/images/preferential/content_bg01.png") center 0 no-repeat,
+              url("../../public/images/preferential/content_bg02.png") center 409px no-repeat,
+              url("../../public/images/preferential/content_bg03.png") center 913px no-repeat;
+  padding-bottom: 80px;
+}
+
+.kx_zjjl_list {
+  width: 837px;
+  height: 54px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+}
+
+.th_prize_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.th_prize {
+  width: 302px;
+  height: 184px;
+  margin-left: 12px;
+  margin-top: 12px;
+  float: left;
+}
+
+.throll {
+  width: 100%;
+  height: 100%;
+  background: url("../../images/preferential/th_roll.png") no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.throll:hover {
+  background: url("../../images/preferential/th_roll_hover.png") no-repeat;
+}
+
+.th_btn {
+  display: inline-block;
+  width: 244px;
+  height: 69px;
+  background: url("../../images/preferential/th_btn.png") no-repeat;
+  font-size: 18px;
+  line-height: 69px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.th_btn:hover {
+  background: url("../../images/preferential/th_btn_hover.png") no-repeat;
+}
+
+.th_dialog_btn {
+  display: inline-block;
+  width: 166px;
+  height: 47px;
+  background: url("../../images/preferential/th_dialog_btn.png") no-repeat;
+  font-size: 16px;
+  line-height: 47px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.th_dialog_btn:hover {
+  background: url("../../images/preferential/th_dialog_btn_hover.png") no-repeat;
+}
+
+.th_recharge {
+  cursor: pointer;
+  margin-left: 488px;
+  margin-top: 26px;
+  width: 446px;
+  .recharge {
+    display: block;
+  }
+  .recharge_hover {
+    display: none;
+  }
+}
+
+.th_recharge:hover {
+  .recharge {
+    display: none;
+  }
+  .recharge_hover {
+    display: block;
+  }
+}
+
+.weibo_weixin {
+  position: fixed;
+  left: 30px;
+  top: 25%;
+  width: 188px;
+}
+
+/***** 抽奖模块 *****/
+.prize_active {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.active .prize_active{
+  display: block;
+}
+

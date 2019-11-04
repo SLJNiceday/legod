@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0eb4303e084ff5791f2a25e3df421cea";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <title>雷神卡牌翻翻乐</title>
+</head>
+<body>
+<div id="app">
+    <div class="kp_container_bgc">
+
+        <!--顶部导航-->
+        <head-nav v-on:changelanguage="onChangeLanguage" id="page_top" @logined="logined" @logout="logout"
+                  ref="headnav"></head-nav>
+        <div class="model_container">
+            <img :src="activity_json.banner_bg_top" alt="雷神加速器" class="activity_main_banner">
+        </div>
+        <div class="model_container">
+            <img :src="activity_json.banner_bg_bottom" alt="雷神加速器" class="activity_main_banner">
+        </div>
+
+        <div class="activity_model_content" :class="{'model_left_content' : activity_json.joinLeft}">
+            <!--套餐推荐-->
+            <div class="model_container" id="recharge" :class="{'model_left_container' : activity_json.joinLeft}">
+                <img :src="activity_json.package_bg" alt="">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}">
+                    <p class="pay_user_num">已有{{pay_user_num}}人充值</p>
+                    <ul class="flex_row_between" style="align-items: flex-start;padding: 20px 40px;">
+                        <li class="kp_package" v-for="item in priceList">
+                            <p style="font-size: 37px;color: #fff;margin-top: 35px;line-height: 48px;">{{item.price_title}}小时</p>
+                            <p style="font-size: 20px;color: #fff;margin-top: 5px;">
+                                ¥
+                                <span style="font-size: 37px;font-weight: 600;line-height: 48px;">{{item.price_num}}元</span>
+                            </p>
+                            <s style="font-size: 20px;margin-top: 25px;color: #5a359e;line-height: 26px;display: block">{{item.price_short_desc}}</s>
+                            <p style="font-size: 20px;margin-top: 8px;color: #fff;line-height: 26px;">{{'(' + item.price_desc + ')'}}</p>
+                            <p class="kp_package_msg" v-if="item.price_num<50">获得一次抽奖机会</p>
+                            <p class="kp_package_msg" v-if="item.price_num>50 && item.price_num<200">获得两次抽奖机会</p>
+                            <p class="kp_package_msg" v-if="item.price_num>200">获得三次抽奖机会</p>
+                            <a class="kp_buy_btn" @click="gotoRecharge(item)">立即充值</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--抽奖模块-->
+            <div class="model_container" :class="{'model_left_container' : activity_json.joinLeft}" id="step1">
+                <img :src="activity_json.choujiang_bg" alt="">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}">
+                    <p class="kp_model_title">NO1. 卡牌翻翻乐</p>
+                    <ul class="kp_list flex_row_between">
+                        <li class="kp_prize_li" v-for="(item,index) in kp_list">
+                            <div class="kp_prize_box" :class="{'kp_prize_reverse': item.is_reverse}">
+                                <img class="kp_prize_on" :src="item.prize_img_url" alt="">
+                                <img class="kp_prize_off" src="./images/kapai/kp_prize_back.png" alt="">
+                            </div>
+                            <a class="kp_roll" @click="clickReverse(index)" v-show="!item.btn_is_hide"></a>
+                        </li>
+                    </ul>
+                    <div class="flex_row_between" style="margin-top: 30px;">
+                        <div style="margin-left: 45px;">
+                            <a class="kp_btn" @click="gotoDuijiang">奖品记录</a>
+                            <span style="font-size: 18px;color: #ffffff;margin-left: 40px;">剩余{{aCount}}次翻卡牌机会</span>
+                        </div>
+                        <div class="kp_zjjl_box">
+                            <ul class="kp_zjjl_list" id="jilu_box">
+                                <li v-for="(item, index) in awardList" :key="index" style="text-align: center;width: 48%;">
+                                    <p class="jilu_font" style="color: #c4fcff;text-align: center;">
+                                        <span class="f_left">恭喜</span>
+                                        <span class="f_left pos_jilu_list words_flow" style="width: 60px;">{{item.nickname || item.mobile_num || item.mail}}</span>
+                                        <span class="f_left pos_jilu_list">获得</span>
+                                        <span class="f_left pos_jilu_list words_flow" style="width: 70px;">{{item.title}}</span>
+                                        <!--<span>{{item.create_time}}</span>-->
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--奖品展示  -->
+            <div class="model_container" :class="{'model_left_container' : activity_json.joinLeft}" id="step2">
+                <img :src="activity_json.weixin_model_bg" alt="雷神加速器">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}">
+                    <p class="kp_model_title" style="margin-top: 130px;">NO2.  卡牌奖池展示</p>
+                </div>
+            </div>
+
+            <!--兑奖-->
+            <div class="model_container" :class="{'model_left_container' : activity_json.joinLeft}" id="step3">
+                <img :src="activity_json.shouyou_model_bg" alt="雷神手游加速器">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}">
+                    <p class="kp_model_title" style="margin-top: 140px;">NO3. 雷神游戏卡随心兑</p>
+                    <ul class="kp_dj_list flex_row_between">
+                        <li class="kp_dj_li">
+                            <p style="padding-left: 15px;">全境封锁2 标准版+首年季票 &nbsp;&nbsp;&nbsp;  <span style="color: #ff9000;">剩余{{game_num01}}个</span> </p>
+                            <p style="padding-left: 15px;">仅限雷神游戏卡兑换</p>
+                            <div style="text-align: center;margin-top: 32px;">
+                                <a class="kp_btn" @click="gotoDuijiang">立即兑换</a>
+                            </div>
+                        </li>
+                        <li class="kp_dj_li">
+                            <p style="padding-left: 15px;">只狼:影逝二度 标准版 &nbsp;&nbsp;&nbsp;  <span style="color: #ff9000;">剩余{{game_num02}}个</span> </p>
+                            <p style="padding-left: 15px;">仅限雷神游戏卡兑换</p>
+                            <div style="text-align: center;margin-top: 32px;">
+                                <a class="kp_btn" @click="gotoDuijiang">立即兑换</a>
+                            </div>
+                        </li>
+                        <li class="kp_dj_li">
+                            <p style="padding-left: 15px;">鬼泣5 标准版 &nbsp;&nbsp;&nbsp;  <span style="color: #ff9000;">剩余{{game_num03}}个</span> </p>
+                            <p style="padding-left: 15px;">仅限雷神游戏卡兑换</p>
+                            <div style="text-align: center;margin-top: 32px;">
+                                <a class="kp_btn" @click="gotoDuijiang">立即兑换</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--推荐码-->
+            <div class="model_container" :class="{'model_left_container' : activity_json.joinLeft}"  id="step4">
+                <img :src="activity_json.tuijian_model_bg" alt="雷神手游加速器">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}">
+                    <p class="kp_model_title" style="margin-top: 135px;">NO4. 邀好友领时长</p>
+                    <div class="kp_link">
+                        <span v-if="refer_code_link == ''" @click="gotoLogin" class="cursor kp_link_font">请先登录</span>
+                        <span v-if="refer_code_link != ''" class="kp_link_font" id="spanCopyRefercodeLink">{{refer_code_link}}</span>
+                        <a class="kp_btn" @click="copyRefercodeLink" id="copyRefercodeLink">复制链接</a>
+                    </div>
+                    <p style="font-family: 'kp_font';font-size: 16px;color: #fff;padding-left: 86px;text-align: left;margin-top: 50px;">
+                        邀请好友充值成功双方可赠送50小时时长卡 <br>
+                        赠送时长将自动发放到双方账户！
+                    </p>
+                </div>
+            </div>
+
+            <!--活动规则-->
+            <div class="model_container guize_bg" :class="{'model_left_container' : activity_json.joinLeft}"
+                 style="width: 100%;height: 400px;" v-if="activity_json.weixin_model_bg">
+                <div :class="{'model_left_outside_box' : activity_json.joinLeft,'model_outside_box' : !activity_json.joinLeft}"
+                     style="text-align: left;">
+                    <h3 style="font-family: 'kp_font';font-size: 24px;color: #fff;margin-top: 40px;">活动规则：</h3>
+                    <p style="font-family: 'kp_font';font-size: 16px;color: #fff;">
+                        此活动只针对于雷神超级会员，海外会员不在此活动范围内！ <br>
+                        参与活动前请仔细阅读活动规则<br>
+                        1.活动时间：2019年5月29日15:30-2019年6月18日15:30.<br>
+                        2.用户充值39元/49元套餐即可获得一次翻卡牌机会，充值139元套餐获得两次翻卡牌机会，充值229元套餐可获得三次翻卡牌机会.<br>
+                        3.抽奖奖品随机获得，不可进行退换！<br>
+                        4.抽中雷神游戏卡的用户可自行进行奖品兑换，兑换成功不退不换！<br>
+                        5.游戏道具的用户均发放CDK，请自行到对应平台激活使用。<br>
+                        6.获得时长卡用户，直接在官网"个人中心-活动记录"页面点击领取自动兑换！自动兑换截止到2019年6月18日24:00，请尽快使用！<br>
+                        7.邀请好友充值成功获得的50小时充值卡会自动发放到邀请双方账户。<br>
+                        8.活动页面抽奖机会仅限在活动期间使用，逾期清空作废！<br>
+                    </p>
+                    <p style="font-family: 'kp_font';font-size: 16px;color: #fff;margin-top: 20px;">本次活动的最终解释权归上海雷神网络科技有限公司所有 </p>
+                </div>
+            </div>
+
+
+            <!--分享部分-->
+            <div style="width: 200px;z-index: 1;margin-left: 620px;" :class="{'fixed_share':joinleftfix==1}"
+                 class="activity_share_box" v-if="activity_json.joinLeft">
+                <img :src="activity_json.activity_share_bg" alt="" class="img_filter">
+                <div class="kp_side_box" style="width: 175px;z-index: 1">
+                    <a class="maodian_step" style="margin-top: 16px;" href="#step1">NO1. 卡牌翻翻乐</a>
+                    <a class="maodian_step" style="margin-top: 26px;" href="#step2">NO2. 卡牌奖池展示 </a>
+                    <a class="maodian_step" style="margin-top: 26px;" href="#step3">NO3. 雷神游戏卡随心兑</a>
+                    <a class="maodian_step" style="margin-top: 26px;" href="#step4">NO4. 邀好友领时长</a>
+                    <a class="maodian_step" style="margin-top: 40px;" href="#page_top">TOP</a>
+                </div>
+            </div>
+        </div>
+
+        <!--中奖了-->
+        <div class="activity_dialog" :class="{'vshide':!dialog_win}" v-if="activity_json.cj_success_type">
+            <div class="activity_dialog_notice_out" :class="{'activity_dialog_notice_in':dialog_win}"
+                 style="text-align: center;">
+                <img :src="activity_json.choujiang_success_bg" alt="雷神加速器">
+                <div class="activity_dialog_content">
+                    <p style="line-height: 59px;font-size: 24px;color: #c2fafe;margin-top: 80px;font-family: 'kp_font'">恭喜您</p>
+                    <div class="flex_column_center" style="font-size: 16px;color: #101859;">
+                        <p class="activity_dialog_notice_msg" style="font-size:16px;margin-top: 51px;color: #c2fafe;font-family: 'kp_font';">
+                            获得:{{prize_name}}</p>
+                        <span slot="footer" class="dialog-footer" style="margin-top: 60px;">
+                            <a @click="closeDialog" class="kp_dialog_btn">再抽一次</a>
+                            <a class="kp_dialog_btn" @click="gotoDuijiang" style="margin-left: 30px;">去兑奖</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="activity_dialog_close" @click="closeDialog"
+                     style="top: 40px;right: 40px;width: 26px;height: 26px;">
+                    <img :src="activity_json.dialog_close_bg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--错误提示-->
+        <div class="activity_dialog" :class="{'vshide':!dialog_error}">
+            <div class="activity_dialog_notice_out" :class="{'activity_dialog_notice_in':dialog_error}"
+                 style="text-align: center;">
+                <img :src="activity_json.dialog_notice_bg" alt="雷神加速器">
+                <div class="activity_dialog_content">
+                    <p style="line-height: 59px;font-size: 24px;color: #c2fafe;margin-top: 80px;">温馨提示</p>
+                    <p style="font-family: 'kp_font';font-size: 16px;color: #c2fafe;padding: 0 50px;margin-top: 51px;">{{dialog_msg}}</p>
+                    <div slot="footer" class="dialog-footer" style="margin-top: 60px;">
+                        <a @click="closeDialog" class="kp_dialog_btn">确定</a>
+                    </div>
+                </div>
+                <div class="activity_dialog_close" @click="closeDialog"
+                     style="top: 40px;right: 40px;width: 26px;height: 26px;">
+                    <img :src="activity_json.dialog_close_bg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--提示充值-->
+        <div class="activity_dialog" :class="{'vshide':!dialog_recharge}">
+            <div class="activity_dialog_notice_out" :class="{'activity_dialog_notice_in':dialog_recharge}"
+                 style="text-align: center">
+                <img :src="activity_json.dialog_notice_bg" alt="雷神加速器">
+                <div class="activity_dialog_content">
+                    <p style="line-height: 59px;font-size: 24px;color: #c2fafe;margin-top: 80px;">温馨提示</p>
+                    <div class="flex_column_center" style="margin-top: 51px;">
+                        <p style="font-size: 16px;color: #c2fafe;padding: 0 20px;width: 100%;font-family: 'kp_font';">
+                            您的翻牌次数为0,无法进行抽奖，赶快充值套餐获取翻牌次数吧！
+                        </p>
+                        <p slot="footer" class="dialog-footer" style="margin-top: 60px;">
+                            <a @click="gotoInvite" class="kp_dialog_btn">立即充值</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="activity_dialog_close" @click="onCloseRecharge"
+                     style="top: 40px;right: 40px;width: 26px;height: 26px;">
+                    <img :src="activity_json.dialog_close_bg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--未登录提醒-->
+        <div class="activity_dialog" :class="{'vshide':!dialog_no_login}">
+            <div class="activity_dialog_notice_out" :class="{'activity_dialog_notice_in':dialog_no_login}"
+                 style="text-align: center;">
+                <img :src="activity_json.dialog_notice_bg" alt="雷神加速器">
+                <div class="activity_dialog_content">
+                    <p style="line-height: 59px;font-size: 24px;color: #c2fafe;margin-top: 80px;">温馨提示</p>
+                    <p class="activity_dialog_notice_msg" style="font-size: 16px;color: #c2fafe;margin-top: 51px;font-family: 'kp_font';">
+                        您还未进行登录，请先登录再参与活动</p>
+                    <div slot="footer" class="dialog-footer" style="margin-top: 20px;">
+                        <a @click="gotoLogin" class="kp_dialog_btn">立即登录</a>
+                    </div>
+                </div>
+                <div class="activity_dialog_close" @click="onCloseNologin"
+                     style="top: 40px;right: 40px;width: 26px;height: 26px;">
+                    <img :src="activity_json.dialog_close_bg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--中奖纪录弹窗-->
+        <div class="activity_dialog" :class="{'vshide':!dialog_award}" v-if="activity_json.guizejilutype == 1">
+            <div class="activity_dialog_notice_out" :class="{'activity_dialog_notice_in':dialog_award}"
+                 style="text-align: center;">
+                <img :src="activity_json.dialog_award_bg" alt="雷神加速器">
+                <div class="activity_dialog_title_box">
+                    <img :src="activity_json.dialog_title_bg" alt="雷神加速器">
+                    <p class="activity_dialog_title" style="line-height: 59px;font-size: 26px;color: #101859;">中奖纪录</p>
+                </div>
+                <div class="activity_dialog_content">
+                    <div style="height: 100%;">
+                        <ul class="kx_prize_ul" v-show="awardRecordList.length != 0 && account_token != ''"
+                            style="display: none;">
+                            <li class="kx_prize_li" v-for="(item, index) in awardRecordList" :key="index">
+                                <div class="kx_prize_jilu">
+                                    <!--<p style="font-size: 16px;">抽中</p>-->
+                                    <span style="font-size: 16px;">{{item.present_title}}</span>
+                                    <span>{{item.create_time}}</span>
+                                </div>
+                                <div class="kx_prize_dj" :class="{'kx_prize_ydj':item.status == 3}"
+                                     @click="gotoDuijiang(item.status)">{{item.status == 0 ? '立即兑换' :
+                                    item.status_title}}
+                                </div>
+                            </li>
+                        </ul>
+                        <img class="zjjl_empty" style="display: none;" src="./images/kaixue/zjjl_empty.jpg" alt=""
+                             v-show="awardRecordList.length == 0 && account_token != ''">
+                        <p class="zjjl_empty_msg" style="display: none;color: #101859;"
+                           v-show="awardRecordList.length == 0 && account_token != ''">您暂无中奖记录</p>
+                    </div>
+                </div>
+                <div class="activity_dialog_close" @click="closeDialog"
+                     style="top: -20px;right: -20px;width: 67px;height: 67px;">
+                    <img :src="activity_json.dialog_close_bg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--充值弹框-->
+        <recharge-dialog ref="to_recharge" @paysuccess="logined" @loginout="tokenExpired" :chooseinfo="userInfo"></recharge-dialog>
+
+        <!--兑奖弹框-->
+        <record-dialog ref="activeRecordList" @loginout="tokenExpired"></record-dialog>
+
+        <foot-nav class="other_foot_nav"></foot-nav>
+    </div>
+</div>
+</body>
+#include('./components/_kefu.html')
+</html>

@@ -1,0 +1,30 @@
+{
+    "leigod":{
+        "windows":{
+            "download_url":"//update.leigod.com/soft/win/5.0.2/LeiGodSetup.5.0.2.exe"
+        },
+        "android":{
+            "download_url":"//update.leigod.com/soft/android/leigod_v1.2.0.apk"
+        },
+        "pay": {
+            "is_show_wx": 0,
+            "is_show_zfb": 0,
+            "is_show_paypal": 1
+        },
+        "0": {
+            "register": {
+                "is_email": 1
+            }
+        },
+        "1": {
+            "register": {
+                "is_email": 0
+            }
+        },
+        "shouchong_banner":{
+            "url":"./images/sc_img.jpg",
+            "start_time":"2019/7/30 15:30:00",
+            "end_time":"2019/8/5 15:30:00"
+        }
+    }
+}

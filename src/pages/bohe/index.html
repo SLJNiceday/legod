@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="p:domain_verify" content="1840b2cd5dae2761392f23daff8540f5" />
+    <script src="https://hm.baidu.com/hm.js?9513e0c1768e0f11b637a3b4be7d9131"></script>
+    <script>
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>薄荷首页</title>
+    <meta name="keywords" content="a1">
+    <meta name="description" content="a1">
+</head>
+
+<body>
+    <div id="app" :class="webParam.region_code == 1 ? 'index_cn' : 'index_en'">
+        <!-- 浏览器版本过低时提示 -->
+        <p style="display: none" class="browser_tip" v-show="browserTipShow">
+            您当前浏览器版本较低,导致本网站内部分功能可能无法正常使用,建议您更换高版本的浏览!
+            <span class="browser_tip_close" @click="closeBrowserTip">下次再说</span>
+        </p>
+        <!-- 头部导航 -->
+        <div class="wrap_head_nav">
+            <head-nav v-on:changelanguage="onChangeLanguage"></head-nav>
+        </div>
+        <!-- banner部分 -->
+        <div class="p_relative">
+            <video class="banner_video_box" src="/video/bohe_banner_video.mp4" loop="" autoplay="" preload="" muted=""></video>
+            <div class="wrap_video"></div>
+            <div class="content_wrap banner_content">
+                <h3 class="banner_title_font">薄荷加速器，免费也可以是精品</h3>
+                <p class="mar_b25 banner_sub_font">海量游戏  免费加速</p>
+                <a class="free_download_btn">立即免费使用</a>
+            </div>
+        </div>
+        <!-- 下载列表与薄荷产品特点 -->
+        <div style="background-color: #f5f5f5;" class="pad_v50">
+            <div class="content_wrap text_center">
+                <div class="mar_b50">
+                    <a class="index_down_cell mar_r20"><img src="./images2.0/bh_windows_hov.png" alt=""><span class="mar_l5">PC版下载</span></a>
+                    <a class="index_down_cell mar_r20"><img src="./images2.0/bh_mac_hov.png" alt=""><span class="mar_l5">MAC版下载</span></a>
+                    <a class="index_down_cell mar_r20"><img src="./images2.0/bh_ipone_hov.png" alt=""><span class="mar_l5">App Store下载</span></a>
+                    <a class="index_down_cell"><img src="./images2.0/bh_android_hov.png" alt=""><span class="mar_l5">Android下载</span></a>
+                </div>
+                <div class="clear_fix">
+                    <div class="index_desc_box f_left">
+                        <img src="./images2.0/index_desc_icon01.png" alt="">
+                        <p class="mar_t15 mar_b15 index_desc_title">极致加速体验</p>
+                        <p class="index_desc_font">全球上万服务器节点环形分布，享游戏超低延时，有效解决频繁掉线、卡顿、丢包等问题</p>
+                    </div>
+                    <div class="index_desc_box f_left">
+                        <img src="./images2.0/index_desc_icon02.png" alt="">
+                        <p class="mar_t15 mar_b15 index_desc_title">顶级设备</p>
+                        <p class="index_desc_font">搭载海外顶级国际金融专线, 选用国际顶级机房服务</p>
+                    </div>
+                    <div class="index_desc_box f_left">
+                        <img src="./images2.0/index_desc_icon03.png" alt="">
+                        <p class="mar_t15 mar_b15 index_desc_title">免费加速</p>
+                        <p class="index_desc_font">薄荷免费加速, 市面上唯一一款全免费的加速器</p>
+                    </div>
+                    <div class="index_desc_box f_left">
+                        <img src="./images2.0/index_desc_icon04.png" alt="">
+                        <p class="mar_t15 mar_b15 index_desc_title">海量游戏</p>
+                        <p class="index_desc_font">支持加速绝地求生、彩虹六号、英雄联盟、 GTA5、 CSGO、 DOTA2、H1Z1等数百款游戏，涵盖当前所有热门游戏</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 薄荷加速服务范围 -->
+        <div class="clear_fix">
+            <div class="service_type_cell f_left">
+                <img class="service_type_img" src="./images2.0/service_type_game.png" alt="">
+                <div class="service_abs_box">
+                    <p class="service_abs_title">游戏</p>
+                    <p class="service_desc_font mar_t10">刺激战场 王者荣耀 英雄联盟 所有国服游戏全支持</p>
+                </div>
+            </div>
+            <div class="service_type_cell f_left">
+                <img class="service_type_img" src="./images2.0/service_type_music.png" alt="">
+                <div class="service_abs_box">
+                    <p class="service_abs_title">音乐</p>
+                    <p class="service_desc_font mar_t10">网易云音乐 QQ音乐 酷狗音乐完美播放</p>
+                </div>
+            </div>
+            <div class="service_type_cell f_left">
+                <img class="service_type_img" src="./images2.0/service_type_webpage.png" alt="">
+                <div class="service_abs_box">
+                    <p class="service_abs_title">网页</p>
+                    <p class="service_desc_font mar_t10">更多加速功能，下载加速!</p>
+                </div>
+            </div>
+            <div class="service_type_cell f_left">
+                <img class="service_type_img" src="./images2.0/service_type_video.png" alt="">
+                <div class="service_abs_box">
+                    <p class="service_abs_title">视频</p>
+                    <p class="service_desc_font mar_t10">爱奇艺 优酷 腾讯视频全支持 随时随地嗨看世界杯</p>
+                </div>
+            </div>
+        </div>
+        <!-- 底部导航 -->
+        <div class="wrap_foot_nav">
+            <foot-nav v-on:ondownloadconfig="onDownloadConfig"></foot-nav>
+        </div>
+    </div>
+</body>
+</html>

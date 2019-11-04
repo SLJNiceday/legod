@@ -1,0 +1,443 @@
+/** 引入字体 **/
+@font-face {
+  font-family: "kp_font";
+  src: url("../fonts/kp_font.ttf") format("truetype");
+}
+
+//  。。。
+/******     活动背景色       ******/
+
+/******     活动背景色       ******/
+.kp_container_bgc {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #0041c1;
+
+  .activity_main_banner {
+    display: block;
+    position: relative;
+    left: 50%;
+    margin-left: -960px !important;
+  }
+
+  .activity_model_content {
+    position: relative;
+    width: 100%;
+    margin: 30px auto 0;
+    padding-bottom: 20px;
+  }
+
+  .model_left_content {
+    width: 1200px;
+  }
+
+  /**
+      构建页面每一个部分的最外层盒子，主要是帮助实现定位样式
+   */
+  .model_container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+
+  .model_left_container {
+    text-align: left;
+  }
+
+  /**
+      套餐列表部分,水平居中对齐，对齐方式讲更具不同的活动页面进行变化
+   */
+  .package_row_box {
+    width: 1200px;
+    position: absolute;
+    top: 50%;
+    margin-top: -120px;
+    left: 50%;
+    margin-left: -600px;
+  }
+
+  /**
+      活动公共内容区的外层盒子
+   */
+  .model_outside_box {
+    width: 1200px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -600px;
+  }
+
+  .model_left_outside_box {
+    width: 1200px !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .activity_dialog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+  }
+
+  .activity_share_box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 260px !important;
+  }
+
+  .fixed_share {
+    position: fixed !important;
+    top: 2% !important;
+  }
+
+  .maodian_step {
+    font-family: "kp_font";
+    display: block;
+    font-size: 16px;
+    color: #ffe922;
+    text-align: center;
+  }
+
+  .maodian_step:hover {
+    background-color: #0873cd;
+    color: #01f2fe;
+  }
+
+  //提示弹窗
+  .activity_dialog_notice_out {
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    margin-left: -285px;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .activity_dialog_notice_in {
+    top: 200px;
+    opacity: 1;
+    transition: all 0.3s;
+  }
+
+  .vshide {
+    visibility: hidden;
+  }
+
+  .activity_dialog_title_box {
+    width: 100%;
+    position: absolute;
+    top: -25px;
+    text-align: center;
+  }
+
+  .activity_dialog_title {
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .activity_dialog_content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .activity_dialog_notice_msg {
+    margin-top: 120px;
+  }
+
+  .activity_dialog_close {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  /***** 抽奖模块 *****/
+  .prize_active {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+  }
+
+  .active .prize_active {
+    display: block;
+  }
+
+  .pay_user_num {
+    font-family: "kp_font";
+    font-size: 24px;
+    color: #ffe922;
+    margin-top: 106px;
+    text-align: center;
+  }
+
+  .kp_package {
+    width: 270px;
+    background: url("../../images/kapai/kp_package_bg.png") top center no-repeat;
+  }
+
+  .kp_package_msg {
+    width: 200px;
+    height: 38px;
+    line-height: 38px;
+    background-color: #ffea05;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #e74e4d;
+    margin: 25px auto 0;
+  }
+
+  .kp_buy_btn {
+    font-family: "kp_font";
+    width: 233px;
+    height: 81px;
+    background: url("../../images/kapai/kp_buy_btn.png") no-repeat;
+    line-height: 81px;
+    text-align: center;
+    margin-top: 70px;
+    font-size: 26px;
+    color: #171070;
+  }
+
+  .kp_buy_btn:hover {
+    margin-top: 65px;
+    transition: all .4s;
+  }
+
+  .kp_model_title {
+    font-family: "kp_font";
+    font-size: 22px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 138px;
+  }
+
+  .kp_list {
+    margin-top: 50px;
+    padding: 0 25px;
+  }
+
+  .kp_prize_li {
+    width: 188px;
+    height: 285px;
+    position: relative;
+  }
+
+  .kp_prize_box {
+    width: 188px;
+    height: 285px;
+    position: relative;
+    //perspective:1000px;
+  }
+
+  .kp_prize_reverse {
+    .kp_prize_on {
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+      z-index: 2;
+    }
+    .kp_prize_off {
+      -webkit-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+      z-index: 1;
+    }
+  }
+
+  .kp_prize_on {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    backface-visibility: hidden;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    transition: all 1s;
+  }
+
+  .kp_prize_off {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    backface-visibility: hidden;
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    transition: all 1s;
+  }
+
+  .kp_roll {
+    width: 131px;
+    height: 64px;
+    background: url("../../images/kapai/kp_prize_btn.png") no-repeat;
+    position: absolute;
+    left: 28px;
+    top: 172px;
+    z-index: 2;
+  }
+
+  .kp_roll:hover {
+    top: 167px;
+    transition: all .4s;
+  }
+
+  .kp_btn {
+    font-family: "kp_font";
+    width: 233px;
+    height: 81px;
+    background: url("../../images/kapai/kp_btn_bg.png") no-repeat;
+    line-height: 81px;
+    font-size: 26px;
+    color: #481bb8;
+    text-align: center;
+    position: relative;
+    top: 0;
+  }
+
+  .kp_btn:hover {
+    top: -5px;
+    transition: all .4s;
+  }
+
+  .kp_zjjl_box {
+    width: 446px;
+    height: 54px;
+    margin-right: 70px;
+    overflow: hidden;
+  }
+
+  .kp_zjjl_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow: hidden;
+  }
+
+  .kp_dj_list {
+    margin-top: 66px;
+    padding: 0 84px;
+    padding-left: 101px;;
+  }
+
+  .kp_dj_li {
+    width: 320px;
+    font-size: 14px;
+    color: #481bb8;
+    text-align: left;
+    box-sizing: border-box;
+    margin-top: 170px;
+  }
+
+  .kp_link {
+    padding-left: 86px;
+    text-align: left;
+    height: 81px;
+    line-height: 81px;
+    font-size: 18px;
+    color: #5830b1;
+    margin-top: 54px;
+  }
+
+  .kp_link_font {
+    font-family: "kp_font";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 796px;
+    height: 81px;
+    padding-left: 30px;
+  }
+
+  .kp_dialog_btn {
+    font-family: "kp_font";
+    width: 166px;
+    height: 58px;
+    background: url("../../images/kapai/kp_dialog_btn.png") no-repeat;
+    line-height: 58px;
+    font-size: 18px;
+    color: #481bb8;
+    text-align: center;
+  }
+
+  .kp_side_box {
+    position: absolute;
+    left: 14px;
+    top: 0;
+  }
+
+  .kp_dialog_title {
+    color: #fff;
+  }
+
+  .kp_record{
+    .el-dialog__wrapper .el-dialog {
+      background: #531e84;
+      min-width: 655px;
+    }
+
+    .el-table {
+      background-color: #531e84;
+      color: #fff;
+      th {
+        color: #fff !important;
+      }
+    }
+
+    .el-table th, .el-table tr {
+      background-color: #531e84;
+    }
+
+    .el-table--striped .el-table__body tr.el-table__row--striped td {
+      background-color: #531e84;
+    }
+
+    .el-table--enable-row-hover .el-table__body tr:hover>td {
+      background-color: #531e84;
+    }
+
+    .el-table--border, .el-table--group {
+      border: 1px solid #b15cff;
+    }
+
+    .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+      border-bottom: 1px solid #b15cff;
+      border-right: 1px solid #b15cff;
+    }
+
+    .el-table td, .el-table th.is-leaf {
+      border-bottom: 1px solid #b15cff;
+    }
+
+    .el-table::before{
+      height: 0;
+    }
+
+    .el-table::after{
+      width: 0;
+    }
+
+    .el-table--border::after, .el-table--group::after, .el-table::before {
+      background-color: #b15cff;
+    }
+  }
+}
+

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="specialPage">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="畅享联机合作之快  引燃对战争胜之心 雷神加速器为马里奥提供专线加速">
+    <meta name="keywords" content="雷神加速器，为速度而生 雷神加速器四大优势 支持加速游戏上千款 热门游戏全涵盖-雷神加速器">
+    <link href="https://cdn.bootcss.com/Swiper/4.0.6/css/swiper.css" rel="stylesheet"/>
+    <script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.js"></script>
+    <script language="javascript">
+        window.onload = function () {
+            var SwiperTwo = new Swiper('.swiper-container-two', {
+                loop: true,
+                speed: 1000,
+                autoplay: {
+                    disableOnInteraction: false,
+                    reverseDirection: false,
+                    stopOnLastSlide: false,
+                    delay: 2000,
+                },
+                direction: 'horizontal',
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                effect: 'fade',
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + '</span>';
+                    },
+                },
+            });
+            SwiperTwo.el.onmouseover = function () {
+                SwiperTwo.autoplay.stop();
+            };
+            SwiperTwo.el.onmouseleave = function () {
+                SwiperTwo.autoplay.start();
+            }
+        }
+
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0eb4303e084ff5791f2a25e3df421cea";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <title>追忆童年，重拾童趣-雷神加速器为马里奥提供专线加速</title>
+</head>
+<body class="mario_special">
+<div id="app">
+    <!--    顶部导航-->
+    <head-nav v-on:changelanguage="onChangeLanguage" ref="headnav"></head-nav>
+
+    <!--    主内容区（banner+screenone+screentwo+screenthree）-->
+    <div style="position: relative;overflow: hidden;">
+        <!--        banner部分-->
+        <div class="mario_banner_day" v-if="is_day">
+            <div class="specia_pos_img1920">
+                <img class="animated pulse infinite" id="marioCaihong" src="./images/mario/mario_caihong.png" alt="">
+                <img src="./images/mario/mario_land_day.png" alt="" style="position: relative;z-index: 2;">
+                <img v-if="is_day" class="mario_black_hua" style="position: absolute;left: 790px;bottom: 90px;"
+                     src="./images/mario/mario_black_hua.png" alt="">
+            </div>
+        </div>
+        <!--晚上-->
+        <div class="mario_banner_night" v-if="!is_day">
+            <div class="specia_pos_img1920">
+                <!--<img class="animated pulse infinite" id="marioCaihong" src="./images/mario/mario_caihong.png" alt="">-->
+                <div style="width: 100%;height: 852px;"></div>
+                <img src="./images/mario/mario_land_night.png" alt="" style="position: relative;z-index: 1;">
+            </div>
+        </div>
+        <div @click="changeDayOrNight" id="sun_moon" class="mario_sun_moon">
+            <img src="./images/mario/mario_sun.png" alt="" id="marioSun" class="mario_z_index2 animated pulse infinite cursor" v-if="is_day">
+            <img src="./images/mario/mario_moon.png" alt="" id="marioMoon" class="mario_z_index2 animated pulse infinite cursor" v-if="!is_day">
+            <div class="mario_cursor cursor" v-show="mario_cursor_show">
+                <img class="mario_cursor_move" src="./images/mario/mario_cursor.png" alt="">
+            </div>
+        </div>
+        <div class="mario_boom">
+            <img class="mario_boom_move" src="./images/mario/mario_boom2.png" alt="">
+        </div>
+        <div class="specia_pos_box">
+            <img src="./images/mario/mario_logo.png" alt=""><br>
+            <img class="mar_t30" src="./images/mario/mario_top_title.png" alt=""><br>
+            <img class="mar_t15" src="./images/mario/mario_sub_title.png" alt=""><br>
+            <a :href="windowsDownloadUrl" style="position: relative;z-index: 3;">
+                <img class="mar_t25" id="mario_btn_move" src="./images/mario/mario_download_btn.png" alt="">
+            </a><br>
+            <img v-if="!is_day" class="mario_z_index1 mario_star_move_one" style="position: absolute;left: 120px;bottom: 255px;"
+                 src="./images/mario/mario_star1.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1 mario_star_move_two" style="position: absolute;left: 530px;bottom: 110px;"
+                 src="./images/mario/mario_star2.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1 mario_star_move_three" style="position: absolute;left: 1325px;bottom: 110px;"
+                 src="./images/mario/mario_star3.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1" style="position: absolute;left: 1250px;bottom: -180px;"
+                 src="./images/mario/mario_coin_machine.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;left: 370px;bottom: -285px;"
+                 src="./images/mario/mario_people02.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;right: 470px;bottom: -350px;"
+                 src="./images/mario/mario_people04.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;left: 277px;bottom: -295px;"
+                 src="./images/mario/mario_eat_hua03.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;left: 630px;bottom: -340px;"
+                 src="./images/mario/mario_landrats.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1 mario_fly_move_three" style="position: absolute;left: 220px;bottom: -145px;"
+                 src="./images/mario/mario_thief.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;left: 740px;bottom: -300px;"
+                 src="./images/mario/mario_cong.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1 mario_fly_move" style="position: absolute;left: 610px;bottom: -70px;"
+                 src="./images/mario/mario_wa.png" alt="">
+            <img v-if="!is_day" class="mario_z_index1" style="position: absolute;right: 310px;bottom: -267px;"
+                 src="./images/mario/mario_eat_hua04.png" alt="">
+            <img v-if="!is_day" class="mario_z_index2" style="position: absolute;right: 385px;bottom: -325px;"
+                 src="./images/mario/mario_ant.png" alt="">
+            <img v-if="!is_day" src="./images/mario/mario_gui.png" alt="" class="mario_z_index2 mario_fly_move_two"
+                 style="position: absolute;top: 115px;left: 1425px;">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;left: 370px;bottom: -285px;"
+                 src="./images/mario/mario_people02.png" alt="">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;right: 370px;bottom: -350px;"
+                 src="./images/mario/mario_people04.png" alt="">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;left: 277px;bottom: -295px;"
+                 src="./images/mario/mario_hua01.png" alt="">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;left: 570px;bottom: -300px;"
+                 src="./images/mario/mario_hua02.png" alt="">
+            <img v-if="is_day" class="mario_z_index1" style="position: absolute;left: 340px;bottom: -260px;"
+                 src="./images/mario/mario_eat_hua01.png" alt="">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;left: 680px;bottom: -360px;"
+                 src="./images/mario/mario_xiyi.png" alt="">
+            <img v-if="is_day" class="mario_z_index1" style="position: absolute;right: 210px;bottom: -260px;"
+                 src="./images/mario/mario_eat_hua02.png" alt="">
+            <img v-if="is_day" class="mario_z_index2" style="position: absolute;right: 285px;bottom: -325px;"
+                 src="./images/mario/mario_boom.png" alt="">
+            <img v-if="is_day" class="mario_z_index1" style="position: absolute;left: 595px;bottom: -250px;"
+                 src="./images/mario/mario_small_long.png" alt="">
+            <img v-if="is_day" src="./images/mario/mario_rats.png" alt="" class="mario_z_index2 mario_fly_move_two"
+                 style="position: absolute;top: 60px;left: 620px;">
+            <img v-if="is_day" src="./images/mario/mario_fly_fish.png" alt="" class="mario_z_index2 mario_fly_move"
+                 style="position: absolute;top: 140px;right: 380px;">
+            <img v-if="is_day" src="./images/mario/mario_star02.png" alt="" class="mario_z_index2"
+                 style="position: absolute;top:240px;left: 450px;">
+            <img v-if="is_day" src="./images/mario/mario_star01.png" alt="" class="mario_z_index2"
+                 style="position: absolute;top:390px;right: 560px;">
+            <img v-if="is_day" src="./images/mario/mario_coin.png" alt="" class="mario_z_index2"
+                 style="position: absolute;top:315px;right: 445px;">
+            <img v-if="is_day" src="./images/mario/mario_girl.png" alt="" class="mario_z_index2"
+                 style="position: absolute;top:315px;right: 330px;">
+            <img v-if="is_day" src="./images/mario/mario_fly_mogu.png" alt="" class="mario_z_index1 mario_fly_move_three"
+                 style="position: absolute;top:425px;right: 710px;">
+            <img v-if="is_day" src="./images/mario/mario_cloud01.png" alt="" class="mario_clound01" style="position: absolute;top: 470px;left: 350px;">
+            <img v-if="is_day" src="./images/mario/mario_cloud04.png" alt="" class="mario_clound02" style="position: absolute;top: 350px;left: 350px;">
+            <img v-if="is_day" src="./images/mario/mario_cloud02.png" alt="" class="mario_clound03"  style="position: absolute;top: 390px;right: 225px;">
+            <img v-if="is_day" src="./images/mario/mario_cloud03.png" alt="" class="mario_clound04"  style="position: absolute;top: 550px;right: 370px;">
+            <img src="./images/mario/mario_run.gif" alt="" id="mario_move" class="mario_move">
+            <img src="./images/mario/mario_mogu.png" alt="" id="mario_mogu" class="mario_mogu">
+        </div>
+        <!--<div class="specia_pos_box" v-if="is_day">-->
+            <!--<img src="./images/mario/mario_logo.png" alt=""><br>-->
+            <!--<img class="mar_t30" src="./images/mario/mario_top_title.png" alt=""><br>-->
+            <!--<img class="mar_t15" src="./images/mario/mario_sub_title.png" alt=""><br>-->
+            <!--<img class="mar_t25" src="./images/mario/mario_download_btn.png" alt="" style="position: relative;z-index: 3;"><br>-->
+            <!---->
+        <!--</div>-->
+
+    </div>
+    <div class="mario_screen01_wrap">
+        <!--        screenone部分-->
+        <div class="special_content text_center">
+            <p class="mario_title_font">雷神加速器，为速度而生</p>
+            <p class="mario_desc_title mar_t20">地图上传下载秒完成，合作、对战不掉线</p>
+            <div class="mar_t50">
+                <img src="./images/mario/mario_screen01_imgright.png" alt="">
+                <img class="mar_l50" src="./images/mario/mario_screen01_imgleft.png" alt="">
+            </div>
+            <div style="position: absolute;left: 40%;top: 25%;">
+                <img src="./images/mario/mario_mao.png" alt="" class="mario_fly_move_two"><br>
+                <img class="mar_t10 mario_fly_move_two" src="./images/mario/mario_VS.png" alt="">
+            </div>
+            <img src="./images/mario/mario_people01.png" alt="" style="position: absolute;top: 400px;left: -120px;">
+            <img src="./images/mario/mario_ding.png" alt="" style="position: absolute;top: 200px;right: -350px;">
+        </div>
+    </div>
+    <div class="mario_screen02_wrap">
+        <!--        screentwo部分-->
+        <div class="special_content text_center">
+            <p class="mario_desc_title">雷神加速器现在不仅面向PC端，同时也能让你在各大主机中</p>
+            <p class="mario_desc_title mar_t20">体验超低延迟、流畅联机，无论是鼠标还是手柄，雷神都能保证你舒心的联机体验</p>
+            <ul class="clear_fix mar_t50">
+                <li class="f_left cursor" @click="goDetail(0)"><img src="./images/mario/mario_game_xbox.png" alt=""></li>
+                <li class="f_left mar_l25 cursor" @click="goDetail(1)"><img src="./images/mario/mario_game_ps4.png" alt=""></li>
+                <li class="f_left mar_l25 cursor" @click="goDetail(2)"><img src="./images/mario/mario_game_switch.png" alt=""></li>
+                <li class="f_left mar_l25 cursor" @click="goDetail(3)"><img src="./images/mario/mario_game_pc.png" alt=""></li>
+            </ul>
+            <div class="mar_t135">
+                <p class="mario_title_font">雷神加速器四大优势</p>
+                <p class="mario_desc_title mar_t20">集速度、热情、稳定、实惠于一身</p>
+                <ul class="clear_fix mar_t50">
+                    <li class="mario_desc_cell mar_r25">
+                        <img class="mar_t30" src="./images/mario/mario_game_youshi1.png" alt="">
+                        <p class="mar_t10 mario_sub_title">专享资源</p>
+                        <p class="mar_t20 mario_desc_font">全程<span style="color: #fffb00;">金融级内网传输</span></p>
+                        <p class="mar_t10 mario_desc_font">自研驱动先进技术加速更稳定</p>
+                    </li>
+                    <li class="mario_desc_cell mar_r25">
+                        <img class="mar_t30" src="./images/mario/mario_game_youshi2.png" alt="">
+                        <p class="mar_t10 mario_sub_title">极高性价比</p>
+                        <p class="mar_t20 mario_desc_font">无限制<span style="color: #fffb00;">随时可暂停</span></p>
+                        <p class="mar_t10 mario_desc_font">每一分钱都花在刀刃上</p>
+                    </li>
+                    <li class="mario_desc_cell mar_r25">
+                        <img class="mar_t30" src="./images/mario/mario_game_youshi3.png" alt="">
+                        <p class="mar_t10 mario_sub_title">更多人都在用</p>
+                        <p class="mar_t20 mario_desc_font">全球千万用户<span style="color: #fffb00;">品质之选</span></p>
+                        <p class="mar_t10 mario_desc_font">网络加速行业<span style="color: #fffb00;">领军品牌</span>软件产品</p>
+                    </li>
+                    <li class="mario_desc_cell">
+                        <img class="mar_t30" src="./images/mario/mario_game_youshi4.png" alt="">
+                        <p class="mar_t10 mario_sub_title">俱乐部专用</p>
+                        <p class="mar_t20 mario_desc_font">RNG、WE、EDG、OMG、</p>
+                        <p class="mar_t10 mario_desc_font">JDG、VG长期<span style="color: #fffb00;">专用雷神</span></p>
+                    </li>
+                </ul>
+            </div>
+            <img src="./images/mario/mario_fly_box.png" alt="" style="position: absolute;top: -150px;left: -352px;">
+            <img src="./images/mario/mario_people03.png" alt="" style="position: absolute;top: 450px;right: -350px;">
+        </div>
+    </div>
+    <div class="mario_screen03_wrap">
+        <!--        screenthree部分-->
+        <div class="special_content text_center">
+            <p class="mario_title_font">支持加速游戏上千款 热门游戏全涵盖</p>
+            <a :href="windowsDownloadUrl">
+            <img class="mar_t25" src="./images/mario/mario_download_btn.png" alt="">
+            </a><br>
+            <div class="mario_game_list mar_t20">
+                <div class="swiper-container-two" style="overflow: initial;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type01.png" alt="魔兽世界" title="《魔兽世界》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type02.png" alt="" title="《DOTA2》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type03.png" alt="" title="《绝地求生》">
+                            </div>
+                            <div class="mar_t10 clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type04.png" alt="" title="《APEX英雄》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type05.png" alt="" title="《喷射战士》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type06.png" alt="" title="《英雄联盟》">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type07.png" alt="" title="《彩虹六号》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type08.png" alt="" title="《刺客信条》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type09.png" alt="" title="《战地五》">
+                            </div>
+                            <div class="mar_t10 clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type10.png" alt="" title="《僵尸世界大战》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type11.png" alt="" title="《雷霆一击》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type12.png" alt="" title="《无限法则》">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type13.png" alt="" title="《GAT5》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type14.png" alt="" title="《黑暗之魂》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type15.png" alt="" title="《使命召唤》">
+                            </div>
+                            <div class="mar_t10 clear_fix">
+                                <img class="f_left" src="./images/mario/mario_game_type16.png" alt="" title="《辐射76》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type17.png" alt="" title="《纪元1800》">
+                                <img class="f_left mar_l10" src="./images/mario/mario_game_type18.png" alt="" title="《马里奥赛车》">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <img src="./images/mario/mario_long.png" alt="" style="position: absolute;top: 300px;left: -245px;z-index: 9;">
+            <img src="./images/mario/mario_luobo.png" alt="" style="position: absolute;top: 100px;right: -122px;z-index: 9;">
+        </div>
+    </div>
+
+    <!--    底部导航-->
+    <foot-nav zt-label="马里奥制造2专题页" class="other_foot_nav" ref="footnav"></foot-nav>
+    <!--    客服下载 -->
+    <download-box v-if="webParam.region_code == 1"></download-box>
+</div>
+
+</body>
+#include('./components/_kefu.html')
+</html>

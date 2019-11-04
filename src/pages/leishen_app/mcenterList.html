@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>会员中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name="robots" content="noindex"/>
+    <script src="https://hm.baidu.com/hm.js?539749fa2c4ded1935537a08f9d20cd7"></script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+    <div class="mui-content" style="padding-bottom: 100px;">
+        <div class="mine_top">
+            <div class="mine_portrait">
+                <img
+                        alt="雷神加速器"
+                        :src="userInfo.avatar_new"
+                        class="mui-pull-left touxiang"
+                        @click="gotoinfos"
+                />
+                <div class="leigod_fl mine_center_info">
+                    <div class="mine_center_info_tit">
+                        <h4 class="ellipsis" style="line-height:1.1;">
+                            {{ userInfo.nickname }}
+                        </h4>
+                        <img class="huiyuanleave" @click="gotoinfos" src="./images/edit_icon@2x.png" width="20"
+                             alt="雷神加速器"/>
+                    </div>
+                    <h5 class="leigod_mt10 leigod_remain_time">剩余使用时间:{{hours}}小时{{minutes}}分钟</h5>
+                </div>
+            </div>
+        </div>
+
+        <ul class="leigod_center_mainnav">
+            <li @click="gotoRecharge">
+                <img src="./images/group_5@2x.png" width="42" alt="">
+                <h5 class="centerList_tit leigod_mt25">充值续费</h5>
+            </li>
+            <li @click="gotopause">
+                <img src="./images/pausecentericon@2x.png" width="48" alt="">
+                <h5 class="centerList_tit leigod_mt15">暂停/恢复</h5>
+            </li>
+            <li @click="gotocardpsw">
+                <img src="./images/group_6@2x.png" width="42" alt="">
+                <h5 class="centerList_tit leigod_mt25">CDKEY兑换</h5>
+            </li>
+        </ul>
+
+        <div class="leigod_center_othernav">
+            <div class="leigod_center_othernavLeft" @click="gotonotify">
+                <img src="./images/gonggao_icon@2x.png" width="20" alt="">
+                <h5 class="center_tit leigod_mt25">官方公告</h5>
+                <h6 class="center_subtit">更新、维护、线路等通知</h6>
+            </div>
+            <ul class="leigod_center_othernavRight">
+                <li class="leigod_mb10" @click="gotonorders">
+                    <img src="./images/dingdan_icon@2x.png" width="20" alt="">
+                    <h5 class="center_tit leigod_ml5">订单管理</h5>
+                </li>
+                <li @click="gotoitems">
+                    <img src="./images/tiaokuan_icon@2x.png" width="20" alt="">
+                    <h5 class="center_tit leigod_ml5">会员服务条款</h5>
+                </li>
+            </ul>
+        </div>
+        <div class="leigod_center_othernav">
+            <div class="leigod_center_othernavLeft" @click="gotosetting">
+                <img src="./images/set_icon@2x.png" class="leigod_pl10" width="20" alt="">
+                <h5 class="center_tit leigod_ml5">设置</h5>
+            </div>
+            <div class="leigod_center_othernavRight activitynav__right" @click="gotoActitvity">
+                <img src="./images/huodongwx.png" class="leigod_pl10" width="20" alt="">
+                <h5 class="center_tit leigod_ml5">活动记录</h5>
+            </div>
+        </div>
+
+
+        <!-- 底部导航 -->
+        <navlist></navlist>
+
+    </div>
+    <!-- loading -->
+    <load :isloading="isLoading"></load>
+
+</div>
+
+</body>
+</html>

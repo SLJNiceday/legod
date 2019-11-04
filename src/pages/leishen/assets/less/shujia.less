@@ -1,0 +1,378 @@
+/******     活动背景色       ******/
+.lsshujia_container_bgc {
+  width: 100%;
+  margin: 0 auto;
+  background-size: 100% 100%;
+
+  .activity_main_banner {
+    display: block;
+    position: relative;
+    left: 50%;
+    margin-left: -960px !important;
+  }
+
+  .activity_model_content {
+    position: relative;
+    width: 100%;
+    margin: 20px auto 0;
+    padding-bottom: 20px;
+  }
+
+  .model_left_content {
+    width: 1200px;
+  }
+
+  .shujia_banner_title {
+    width: 700px;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -350px;
+  }
+
+  .shujia_time_period {
+    position: absolute;
+    bottom: 130px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .shujia_banner_desc {
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    line-height: 42px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /**
+      构建页面每一个部分的最外层盒子，主要是帮助实现定位样式
+   */
+
+  .model_container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+
+  .model_left_container {
+    text-align: left;
+  }
+
+  /**
+      套餐列表部分,水平居中对齐，对齐方式讲更具不同的活动页面进行变化
+   */
+
+  .package_row_box {
+    width: 1200px;
+    position: absolute;
+    top: 50%;
+    margin-top: -120px;
+    left: 50%;
+    margin-left: -600px;
+  }
+
+  /**
+      活动公共内容区的外层盒子
+   */
+
+  .model_outside_box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -600px;
+  }
+
+  .shujia_main_box {
+    width: 800px;
+    padding: 4px;
+    float: left;
+
+    .sj_prize {
+      width: 252px;
+      height: 183px;
+      margin-top: 8px;
+      margin-left: 12px;
+    }
+
+    .active .prize_check {
+      background: url(../../images/shujia/choosen.png);
+    }
+  }
+
+  .sj_zjjl {
+    width: 388px;
+    height: 74px;
+    margin-left: 12px;
+    background: url(../../images/shujia/jl_nomral.jpg);
+
+    &:hover {
+      background: url(../../images/shujia/jl_hover.jpg);
+    }
+  }
+
+  .sj_start {
+    width: 384px;
+    margin-left: 8px;
+    height: 74px;
+    background: url(../../images/shujia/cj_nomral.jpg);
+
+    &:hover {
+      background: url(../../images/shujia/cj_hover.jpg);
+    }
+  }
+
+  .activity_dialog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+  }
+
+  .activity_share_box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 260px !important;
+  }
+
+  .fixed_share {
+    position: fixed !important;
+    top: 2% !important;
+  }
+
+  .maodian_step {
+    font-family: "kp_font";
+    display: block;
+    font-size: 16px;
+    color: #ffe922;
+    text-align: center;
+  }
+
+  .maodian_step:hover {
+    background-color: #0873cd;
+    color: #01f2fe;
+  }
+
+  //提示弹窗
+  .activity_dialog_notice_out {
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    margin-left: -290px;
+    opacity: 0;
+    transition: all 0.3s;
+    width: 580px;
+    height: 369px;
+    border: solid 10px #193c32;
+    background-color: #205c4c;
+  }
+
+  .activity_dialog_notice_in {
+    top: 200px;
+    opacity: 1;
+    transition: all 0.3s;
+  }
+
+  .vshide {
+    visibility: hidden;
+  }
+
+  .activity_dialog_title_box {
+    width: 100%;
+    position: absolute;
+    top: -25px;
+    text-align: center;
+  }
+
+  .activity_dialog_title {
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .activity_dialog_content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .activity_dialog_notice_msg {
+    margin-top: 120px;
+  }
+
+  .activity_dialog_close {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .shujia_dialog_btn {
+    width: 132px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #06283c;
+    font-weight: bold;
+    background: url("../../images/shujia/bgbtn.jpg");
+  }
+
+  /****** 618套餐 ******/
+
+  .shujia_package {
+    width: 285px;
+    height: 122px;
+    text-align: center;
+    cursor: pointer;
+    color: #234C41;
+    margin-top: 20px;
+    margin-left: 18px;
+    transition: all 4s linear 2s;
+    background: url('../../images/shujia/package_bg.jpg');
+    box-sizing: border-box;
+    padding: 14px;
+    position: relative;
+
+    .packageNowBill {
+      font-size: 24px;
+      font-weight: bold;
+
+      .spanHour {
+        display: inline-block;
+        float: left;
+        margin-left: 0px;
+      }
+
+      .spanMoney {
+        display: inline-block;
+        float: right;
+      }
+    }
+
+    .packageDiscount {
+      position: absolute;
+      bottom: 24px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &:hover {
+      animation: bounce 1s;
+    }
+  }
+
+  /***** 抽奖模块 *****/
+
+  .shujia_zjjl_box {
+    float: right;
+    width: 348px;
+    overflow: hidden;
+    margin-top: 12px;
+    height: 468px;
+    background: #183A31;
+    margin-right: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .sj_zjjl_list {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  //element样式修改
+  .kp_record {
+    .el-dialog__wrapper .el-dialog {
+      //background-image: linear-gradient(120deg, #794fee 0%, #4693fd 100%),
+      //linear-gradient(#514ad8, #514ad8);
+      background: #205c4c;
+    }
+
+    .el-table, .el-table__expanded-cell {
+      background: transparent;
+      color: #fff;
+    }
+
+    .el-table th, .el-table tr {
+      background: transparent;
+    }
+
+    .el-table th {
+      color: #fff !important;
+    }
+
+    .el-table__empty-text {
+      color: #ccc;
+    }
+
+    .web_safty_font, .web_tab_cell {
+      color: #fff !important;
+    }
+
+    .el-dialog__headerbtn .el-dialog__close {
+      color: #fff;
+    }
+
+    .el-table--striped .el-table__body tr.el-table__row--striped td {
+      background: transparent;
+    }
+
+    .el-table--enable-row-hover .el-table__body tr:hover > td {
+      background: transparent;
+    }
+
+    .el-loading-mask {
+      background-color: transparent;
+    }
+
+    .el-dialog__body {
+      color: #fff;
+    }
+
+    .el-dialog__title {
+      color: #fff;
+    }
+
+    .inputName {
+      color: #333;
+    }
+  }
+
+  .active_record_box.el-dialog__wrapper {
+    .el-dialog {
+      //background-image: linear-gradient(120deg, #794fee 0%, #4693fd 100%),
+      //linear-gradient(#514ad8, #514ad8);
+      background: #205c4c;
+
+      .el-dialog__body {
+        color: #fff;
+      }
+
+      .el-dialog__title {
+        color: #fff;
+      }
+
+      .el-dialog__headerbtn .el-dialog__close {
+        color: #fff;
+      }
+
+      .inputName {
+        color: #333;
+      }
+    }
+  }
+
+
+}
+

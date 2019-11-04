@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?539749fa2c4ded1935537a08f9d20cd7";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <title>雷神暑期福利大放送</title>
+</head>
+
+<body style="background-color: #234c41">
+
+<div id="app">
+
+    <!--活动banner-->
+    <div class="app-act_banner" :style="{background: 'url('+ activity_json.banner_bg_top +') no-repeat center center' ,'background-size': '100% 100%'}" style="padding-top: 285px;">
+        <p class="app-abs_time">活动时间：2019年7月26日15:30-2019年8月20日15:30</p>
+        <p id="recharge" class="app-abs_explain">本活动仅限在本页面进行充值的用户参加</p>
+    </div>
+
+    <!--主内容区-->
+    <div class="app-act_content">
+        <!--推荐购买套餐-->
+        <div class="flex_sbe_wrap app-pack_box">
+            <img @click="gotoRecharge(activityPackage[0])" src="../images/shujia/shujia_1888.jpg" class="mar_r10" alt="" style="width: 48%;">
+            <img @click="gotoRecharge(activityPackage[1])" src="../images/shujia/shujia_9000.jpg" alt="" style="width: 48%;">
+            <img @click="gotoRecharge(activityPackage[2])" src="../images/shujia/shujia_2300.jpg" class="mar_r10 mar_t10" alt="" style="width: 48%;">
+            <img @click="gotoRecharge(activityPackage[3])" src="../images/shujia/shujia_800.jpg" class="mar_t10" alt="" style="width: 48%;">
+        </div>
+        <!--start   抽奖模块-->
+        <div class="app-present text_center">
+            <!--奖品列表-->
+            <ul id="prize" class="flex_sbe_wrap">
+                <li class="app-present_cell activity_prize_0 p_relative">
+                    <img :src="activity_json.prize_list[0]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+                <li class="app-present_cell activity_prize_1 p_relative">
+                    <img :src="activity_json.prize_list[1]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+                <li class="app-present_cell activity_prize_2 p_relative">
+                    <img :src="activity_json.prize_list[2]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+                <li class="app-present_cell activity_prize_5 p_relative">
+                    <img :src="activity_json.prize_list[5]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+                <li class="app-present_cell activity_prize_4 p_relative">
+                    <img :src="activity_json.prize_list[4]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+                <li class="app-present_cell activity_prize_3 p_relative">
+                    <img :src="activity_json.prize_list[3]" alt="雷神加速器">
+                    <img :src="activity_json.prize_active_img[0]" alt="雷神加速器" class="app-present_active">
+                </li>
+            </ul>
+            <div class="text_center mar_t5 clear_fix">
+                <div @click="gotoRecord" class="app-jilu_btn f_left"></div>
+                <div class="app-common_btn f_right" style="line-height: 14px;" @click="onClickDraw"><a class="mar_t5 app-btn_font">开始抽奖</a><br><span class="app-count_font">剩余抽奖次数:{{aCount}}</span></div>
+            </div>
+            <!--名单列表-->
+            <div class="app-record">
+                <p class="app-record_title">获奖名单</p>
+                <ul class="app_pub_zjjl_list" id="jilu_box">
+                    <li v-for="(item, index) in awardList" :key="index">
+                        <p class="words_flow app-record_font">
+                            <span style="color: #68a293;" class="mar_r10">{{item.create_time}}</span>
+                            <span>恭喜{{item.nickname}}获得{{item.title}}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--end 抽奖模块-->
+
+        <!--start   活动规则-->
+        <div class="mar_b20 pad_w10">
+            <p class="app-title_font">活动规则：</p>
+            <ul class="text_left mar_t15">
+                <li class="mar_b25">
+                    <p class="app-common_font">此活动只针对于雷神超级会员，海外会员不在此活动范围内！</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font mar_b5">参与活动前请仔细阅读活动规则</p>
+                    <p class="app-common_font mar_b5">1、活动时间：2019年7月26日15:30-2019年8月20日15:30</p>
+                    <p class="app-common_font mar_b5">2、活动期间用户充值任意套餐可获得一次抽奖机会，100%中奖！抽奖奖品随机获得，不可进行退换！</p>
+                    <p class="app-common_font mar_b5">3、获得时长卡用户，直接在官网"个人中心-活动记录"页面点击自动领取进行兑换（仅限本人使用，不可转赠）！兑换截止到2019年8月20日24：00，请尽快使用！</p>
+                    <p class="app-common_font mar_b5">4、本活动游戏道具为赠送等值steam充值卡。（道具价格以页面标注价格为准，不受市场浮动影响）</p>
+                    <p class="app-common_font mar_b5">5、仅限通过本活动页面充值获得奖励，本活动不与其他优惠共享。</p>
+                    <p class="app-common_font mar_b5">6、如不通过本页面充值，视为放弃本次活动优惠。</p>
+                    <p class="app-common_font mar_b15">7、活动页面抽奖机会仅限在活动期间使用，逾期清空作废！</p>
+                    <p class="app-common_font">本次活动的最终解释权归上海雷神网络科技有限公司所有 </p>
+                </li>
+            </ul>
+        </div>
+        <!--end 活动规则-->
+    </div>
+
+    <!--弹框区（共6个）-->
+    <!--中奖提示弹框-->
+    <div class="app_dialog" :class="{'app-hidden':!dialog_win}" v-if="activity_json.cj_success_type">
+        <div class="app-dialog_out" :class="{'app-dialog_in':dialog_win}">
+            <img :src="activity_json.dialog_notice_bg" alt="雷神加速器" width="100%" style="opacity: 0;">
+            <div class="app-dialog_content flex_column_center">
+                <p class="dialog_title_font">中奖啦</p>
+                <p class="mar_t50 dialog_present_font">恭喜您获得<br>{{dialog_msg}}</p>
+                <div class="app-common_btn mar_t50" @click="closeDialog">
+                    确定
+                </div>
+                <img class="app-dialog_close" @click="closeDialog" :src="activity_json.dialog_close_bg" alt="" width="14px">
+            </div>
+        </div>
+    </div>
+    <!--错误提示弹框-->
+    <div class="app_dialog" :class="{'app-hidden':!dialog_error}">
+        <div class="app-dialog_out" :class="{'app-dialog_in':dialog_error}">
+            <img :src="activity_json.dialog_notice_bg" alt="雷神加速器" width="100%" style="opacity: 0;">
+            <div class="app-dialog_content flex_column_center">
+                <p class="dialog_title_font">温馨提示</p>
+                <p class="mar_t50 dialog_present_font">{{dialog_msg}}</p>
+                <div class="app-common_btn mar_t50" @click="closeDialog">
+                    确定
+                </div>
+                <img class="app-dialog_close" @click="closeDialog" :src="activity_json.dialog_close_bg" alt=""
+                     width="14px">
+            </div>
+        </div>
+    </div>
+    <!--提示充值弹框-->
+    <div class="app_dialog" :class="{'app-hidden':!dialog_recharge}">
+        <div class="app-dialog_out" :class="{'app-dialog_in':dialog_recharge}">
+            <img :src="activity_json.dialog_notice_bg" alt="雷神加速器" width="100%"  style="opacity: 0;">
+            <div class="app-dialog_content flex_column_center">
+                <p class="dialog_title_font">温馨提示</p>
+                <p class="mar_t50 dialog_present_font">您还未充值，暂无抽奖机会</p>
+                <div class="app-common_btn mar_t50" @click="onCloseRecharge">
+                    去充值
+                </div>
+                <img class="app-dialog_close" @click="onCloseRecharge" :src="activity_json.dialog_close_bg" alt=""
+                     width="14px">
+            </div>
+        </div>
+    </div>
+
+    <!--登录、注册、忘记密码PopUp-->
+    <van-popup position="right" v-model="show_dialog" style="width: 100%;height: 100%;background-color: #f2f2f2;">
+        <transition name="fade" mode="out-in" appear>
+            <keep-alive>
+                <component :is="activComponent" @tologin="gotoLogin" @toregister="toRegister" @toforget="toForgetPwd"
+                           @already-login="alreadyLogin"></component>
+            </keep-alive>
+        </transition>
+    </van-popup>
+
+    <!--充值PopUp-->
+    <van-popup position="bottom" v-model="show_recharge" :lazy-render="false" style="width: 100%;">
+        <recharge-dialog ref="to_recharge" @tologin="gotoLogin" @paysuccess="paySuccess" :choosepriceinfo="choosePriceInfo"></recharge-dialog>
+    </van-popup>
+
+    <!--兑奖PopUp-->
+    <van-popup position="right" v-model="show_reward" :lazy-render="false" style="width: 100%;height: 100%;">
+        <reward-dialog ref="to_reward" @closereward="closeReward"></reward-dialog>
+    </van-popup>
+
+</div>
+
+</body>
+
+</html>

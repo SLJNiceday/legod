@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>支付页面</title>
+</head>
+<body class="wangba_pc">
+<div id="app" v-cloak>
+    <div class="wangba_pc_rechargebox" v-loading="isLoading">
+
+        <div class="wangba_pc_rechargecon">
+            <!--选择充值套餐和方式-->
+            <div class="wangba_recharge_one" v-if="rechargeStep==1">
+                <ul>
+                    <li class="leigod_flex_between wangba_pc_rechargeCell" v-for="(item,index) in catlist" :key="index"
+                        @click="onselectPackage(item,index)">
+                        <div class="leigod_flex_left">
+                            <img src="./images/wangba_pc_noselect.png" v-show="selectIndex!=index" alt="">
+                            <img src="./images/wangba_pc_selected.png" v-show="selectIndex==index" alt="">
+                            <p class="wangba_timer">{{item.hours}}小时</p>
+                        </div>
+                        <p class="wangba_price">{{item.price}}元</p>
+                    </li>
+
+                </ul>
+                <ul class="leigod_flex_between wangba_rechargeBtnBox">
+                    <li class="leigod_flex wangba_recharge_wx" @click="selectPaytype(0)">
+                        <img src="./images/wangba_wx_icon.png" alt="">
+                        <p>微信支付</p>
+                    </li>
+                    <li class="leigod_flex wangba_recharge_alipay" @click="selectPaytype(1)">
+                        <img src="./images/wangba_alipay_icon.png" alt="">
+                        <p>支付宝</p>
+                    </li>
+                </ul>
+            </div>
+            <!--生成二维码-->
+            <div class="wangba_recharge_two leigod_flex_vertify" v-if="rechargeStep==2">
+                <img :src="imgCodeUrl" alt="" width="136" class="wangba_pc_scancode">
+                <div class="wangba_pc_scanTip leigod_flex">
+                    <img src="./images/wangba_pc_scan.png" alt="">
+                    <span v-show="payType==0">请用微信扫码支付</span>
+                    <span v-show="payType==1">请用支付宝扫码支付</span>
+                </div>
+                <a class="wangba_pc_backbtn" @click="backIndex">返回</a>
+            </div>
+
+            <!--查询支付结果-->
+            <div class="wangba_recharge_two leigod_flex_vertify" v-if="rechargeStep==3">
+                <div>
+                    <img src="images/wangba_pc_rechargeok.png" alt="" v-show="payStatus==0" width="70"
+                         class="wangba_pc_scancode">
+                    <img src="images/wangba_pc_rechargefail.png" alt="" v-show="payStatus==1" width="70"
+                         class="wangba_pc_scancode">
+                </div>
+                <div class="wangba_pc_scanTip leigod_flex">
+                    <span v-show="payStatus==0">支付成功, 剩余时间已增加{{addHours}}小时</span>
+                    <span v-show="payStatus==1">支付失败, 请重新支付</span>
+                </div>
+                <a class="wangba_pc_backbtn wangba_pc_backbtn3" @click="backIndex">返回</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

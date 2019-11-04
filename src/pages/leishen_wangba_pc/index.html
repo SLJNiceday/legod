@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页弹窗</title>
+</head>
+<body class="wangba_pc">
+<div id="app">
+    <div class="wangba_pc_dialogbox" v-loading="isLoading">
+<!--        <div class="wangba_pc_close" @click="closedialog"></div>-->
+        <div class="wangba_pc_con">
+            <ul>
+                <!--扫码免费加速-->
+                <li :class="{'show':wangba_pattern==1}"  class="hide">
+                    <img :src="qrCode" alt="" width="188">
+                    <h5 class="wangba_scan_tit">扫码加速</h5>
+                </li>
+                <!--扫码免费加速需要绑定手机号-->
+                <li :class="{'show':wangba_pattern==2&&showBindMobile==0}"  class="hide">
+                    <img :src="qrCode" alt="" width="188">
+                    <h5 class="wangba_scan_tit">扫码加速</h5>
+                    <p class="wangba_scan_subtit">如手机号未绑定, 下一步将是绑定操作</p>
+                </li>
+                <!--绑定手机号界面-->
+                <li :class="{'show':wangba_pattern==2&&showBindMobile==1}" class="wangba_bindBox hide">
+                    <h4 class="wangba_bindTit">手机号绑定</h4>
+                    <div class="wangba_bindmobile_info">
+                        <section class="leigod_flex_left">
+                            <div class="wangba_bindmobile_label">图形验证码</div>
+                            <div class="wangba_bindmobile_inputbox">
+                                <input type="text" placeholder="图形验证码" class="wangba_bindmobile_input" v-model="checkcode">
+                                <img :src="imgCaptchaM.image" alt="" class="wangba_bindmobile_smsbtn img" @click="getCaptcha()" />
+                            </div>
+                        </section>
+                        <section class="leigod_flex_left">
+                            <div class="wangba_bindmobile_label">手机号</div>
+                            <div class="wangba_bindmobile_inputbox">
+                                <input type="number" placeholder="手机号" class="wangba_bindmobile_input" v-model="phone">
+                                <a class="wangba_bindmobile_smsbtn" @click="sendsms" v-if="smsCountDownNum==0">发送</a>
+                                <a class="wangba_bindmobile_smsbtn" v-if="smsCountDownNum>0">已发送{{smsCountDownNum}}s</a>
+                            </div>
+                        </section>
+                        <section class="leigod_flex_left">
+                            <div class="wangba_bindmobile_label">短信验证码</div>
+                            <div class="wangba_bindmobile_inputbox">
+                                <input type="number" placeholder="短信验证码" class="wangba_bindmobile_input" v-model="smscode">
+                            </div>
+                        </section>
+                        <section class="leigod_flex_left">
+                            <div class="wangba_bindmobile_label">密码</div>
+                            <div class="wangba_bindmobile_inputbox">
+                                <input type="password" placeholder="6~20位字母+数字组合" class="wangba_bindmobile_input" v-model="password">
+                            </div>
+                        </section>
+                    </div>
+
+                    <button class="wangba_bindmobile_btn" @click="bindTel">绑定手机</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

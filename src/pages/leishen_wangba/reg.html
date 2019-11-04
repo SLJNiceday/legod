@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>雷神网吧版-注册</title>
+    <meta name="keywords" content="雷神网吧版" />
+    <meta name="description" content="雷神网吧版" />
+</head>
+
+<body>
+    <div id="login" v-cloak>
+        <div class="leigod_container">
+            <!-- 头部 -->
+            <header-nav></header-nav>
+
+            <!-- banner -->
+            <div class="leigod_bannerBox">
+                <div class="leigod_banner">
+                    <img src="./images/wangbaloginbanner.png" class="leigod_center" alt="" srcset="" />
+                    <div class="leigod_bannerCon">
+                        <h3 class="leigod_banner_tit leigod_text_center">用户注册</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- content -->
+            <div class="leigod_contentBox" style="background:#eee;">
+                <div class="leigod_loginBox" v-loading="isLoading">
+                    <!-- 注册流程图 -->
+                    <ul class="leigod_reg_stepbox leigod_flex">
+                        <li class="leigod_reg_step">
+                            <img src="./images/yhstep2h.png" alt="" />
+                        </li>
+                        <li class="leigod_reg_step">
+                            <img src="./images/stepdian.png" v-show="reg_step==1" alt="" />
+                            <img src="./images/stepdianh.png" v-show="reg_step==2" alt="" />
+                        </li>
+                        <li class="leigod_reg_step">
+                            <img src="./images/stepdian.png" v-show="reg_step==1" alt="" />
+                            <img src="./images/stepdianh.png" v-show="reg_step==2" alt="" />
+                        </li>
+                        <li class="leigod_reg_step">
+                            <img src="./images/yhstep3.png" v-show="reg_step==1" alt="" />
+                            <img src="./images/yhstep3h.png" v-show="reg_step==2" alt="" />
+                        </li>
+                    </ul>
+                    <!-- 注册内容 第一步 -->
+                    <div class="leigod_login" v-show="reg_step==1" style="width:580px;display: none;"  @keyup.enter="submitRegOne">
+                        <div class="leigod_panel_body">
+                            <!--<div class="leigod_reg_block">-->
+                                <!--<el-select class="leigod_login_cell" style="width: 100%;" v-model="business_free" placeholder="全部">-->
+                                    <!--<el-option label="网吧付费" :value="0"></el-option>-->
+                                    <!--<el-option label="上网用户付费" :value="2"></el-option>-->
+                                <!--</el-select>-->
+                            <!--</div>-->
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>账号:</span>
+                                </div>
+                                <el-input placeholder="请输入账号" v-model="username" clearable></el-input>
+                            </div>
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>密码:</span>
+                                </div>
+                                <el-input type="password" placeholder="请输入密码(6~20位数字加字母组合)"
+                                    v-model="password" clearable></el-input>
+                            </div>
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>确认密码:</span>
+                                </div>
+                                <el-input type="password" placeholder="再次确认您的登录密码"
+                                          v-model="password_double" clearable></el-input>
+                            </div>
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>网吧名称:</span>
+                                </div>
+                                <el-input type="password_double" placeholder="请输入您的网吧名称"
+                                          v-model="bar_name" clearable></el-input>
+                            </div>
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>联系人:</span>
+                                </div>
+                                <el-input type="password_double" placeholder="请输入联系人姓名"
+                                          v-model="manager" clearable></el-input>
+                            </div>
+                            <div class="leigod_panel_form_cell leigod_flex_left leigod_mt25">
+                                <div class="leigod_panel_form_label">
+                                    <span class="orange">*</span> <span>联系方式:</span>
+                                </div>
+                                <el-input type="password_double" placeholder="请输入手机号"
+                                          v-model="phone" clearable></el-input>
+                            </div>
+
+                            <div class="leigod_login_cell leigod_agreeBox" @click="isAgree=!isAgree">
+                                <span class="el-icon-success leigod_agreeIcon" :class="{active:isAgree}"></span>
+                                <span class="leigod_agreeItems">我已阅读并同意用户协议</span>
+                            </div>
+                            <button class="leigod_loginBtn" style="background:#ccc;" v-if="!isAgree">
+                                提交
+                            </button>
+                            <button class="leigod_loginBtn" v-if="isAgree" @click="clickRegister">
+                                提交
+                            </button>
+                            <h5 class="leigod_login_tips leigod_login_cell">
+                                <a href="/login.html">返回登录</a>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <!-- 第二步  完成 -->
+                    <div class="leigod_login" v-show="reg_step==2" style="display: none;">
+                        <div class="leigod_flex_vertify">
+                            <img src="./images/regsuccess.png" class="leigod_mt45" alt="" />
+                            <h3 class="leigod_mt40">申请已提交 !</h3>
+                            <a href="/login.html" class="leigod_backlink leigod_mt10">返回登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- foot -->
+            <footer-nav></footer-nav>
+        </div>
+    </div>
+</body>
+
+</html>

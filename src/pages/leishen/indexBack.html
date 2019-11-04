@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1046901_xw0z2s9323.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="www_leishen">
+    <button @click="toLogin">登录</button>
+    <button id="zhuce">zhuce</button>
+    <div id="operateDiv" class="hide popWinBack">
+        <div class="pop-layout">
+            <i class="iconfont icon-cha" @click="closeDialog"></i>
+                <component :is="usercomponent" @logined="logined" ref="loginRegisterForget" @closedialog="closeDialog" @tologin="toLogin" @toregister="toRegister"
+                           @toforget="toforgetPass"></component>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+ var zhuce=document.getElementById('zhuce');
+ zhuce.onclick=function(){
+     window.toRegister()
+ }
+</script>

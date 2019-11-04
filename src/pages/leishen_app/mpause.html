@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html style="min-height: 100%;">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>暂停恢复时间</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+
+<body style="min-height: 100%;">
+  <div class="mui-content pauseBtnBox" v-cloak id="app">
+    <ul class="leigod_flex_right leigod_mt10">
+      <li @click="showTips">
+        <img src="./images/problemlogs.png" width="24" alt="">
+      </li>
+      <li class="leigod_ml25 leigod_mr15"  @click="gotologs">
+        <img src="./images/pauselogs.png" width="24" alt="">
+      </li>
+    </ul>
+    <div class="wx_jishiqi" >
+      <img src="./images/jishiqi@2x.png" width="304" alt="">
+      <img src="./images/clockdot.png" width="14" class="clockdot" alt="">
+      <img src="./images/zhizhen@2x.png" width="2" class="pause_point" :class="{start_animate:startAnimal==1}" alt="">
+    </div>
+
+    <div class="pauseBtnBox_mid">
+      <h4 style="font-size: 2.3rem;line-height: 25px;position: relative;" :class="{'showtips':showRechargeBtn}">
+        <span id="hour">{{ hours }}</span>
+        <small>小时</small>
+        <span>{{ minutes }}</span>
+        <small>分</small>
+        <span >{{ seconds }}</span>
+        <small>秒</small>
+        <a class="pauserecharge" @click="gotoRecharge" v-show="showRechargeBtn">去充值</a>
+      </h4>
+      <div class="pause_btn zantingBtn" @click="changePauseState" v-if="pauseState==0" >暂停时间</div>
+      <div class="pause_btn pause_btn_hf"v-if="pauseState==1" @click="changePauseState">恢复时间</div>
+    </div>
+
+    <!-- 底部导航 -->
+    <navlist></navlist>
+  </div>
+</body>
+
+</html>

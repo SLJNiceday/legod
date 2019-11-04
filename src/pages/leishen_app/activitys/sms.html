@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0eb4303e084ff5791f2a25e3df421cea";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <title>雷神暑期大特惠</title>
+</head>
+<body style="background-color: #474b4e;">
+<div id="app" v-cloak>
+
+<!--    活动banner-->
+    <div class="p_relative">
+        <div style="width: 200px;height: 200px;position: absolute;top: 30%;right: 20%;overflow: hidden;">
+            <swiper :options="swiperOption" ref="mySwiper">
+                <!-- slides -->
+                <swiper-slide>
+                    <img src="../images/sms/shujia_host.png" alt="" style="width: 100%;height: 100%;">
+                </swiper-slide>
+                <swiper-slide>
+                    <img src="../images/sms/shujia_mobile.png" alt="" style="width: 100%;height: 100%;">
+                </swiper-slide>
+                <swiper-slide>
+                    <img src="../images/sms/shujia_mac.png" alt="" style="width: 100%;height: 100%;">
+                </swiper-slide>
+                <swiper-slide>
+                    <img src="../images/sms/shujia_pc.png" alt="" style="width: 100%;height: 100%;">
+                </swiper-slide>
+            </swiper>
+        </div>
+        <img src="../images/sms/banner_01.png" alt="" style="width: 100%;">
+    </div>
+<!--    主内容区-->
+    <div class="app-act_content">
+<!--        start   充值模块 套餐列表-->
+        <ul class="flex_row_start">
+            <li @click="ChoosePrice(item, index)" v-for="(item,index) in priceList" :key="index" :class="{app_pack_active: (priceIndex == index)}" class="app-pack_cell flex_column_center">
+                <p class="app-pack_title">{{ item.price_title }}小时</p>
+                <p class="app-pack_price mar_t5">￥{{item.price_num}}</p>
+                <s class="app-pack_orig">{{item.price_short_desc}}</s>
+                <img src="../images/sms/shujia_check_out.png" alt="">
+            </li>
+        </ul>
+
+<!--        start   折扣码-->
+        <div class="mar_t15 app-zekou_box">
+            <div class="f_left app-zekou_font">折扣码</div>
+            <input v-model="common_zhekou" disabled class="f_left app-zekou_ipt" type="text">
+        </div>
+<!--        end 折扣码-->
+
+<!--        游戏列表-->
+        <div class="mar_t10">
+            <p class="text_center app-top_title">加速游戏上千款，涵盖当前所有热门游戏</p>
+            <img class="mar_t20" src="../images/sms/screen01.png" alt="" style="width: 100%;">
+        </div>
+
+<!--        start   活动规则-->
+        <div class="mar_t30">
+            <p class="app-title_font text_center">活动规则</p>
+            <ul class="mar_t15 text_left">
+                <li class="mar_b5">
+                    <p class="app-common_font mar_b5">此活动只针对于雷神超级会员，海外会员不在此活动范围内！</p>
+                    <p class="app-common_font">参与活动前请仔细阅读活动规则</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">1.所有时长套餐均可享受折扣码优惠！</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">2.折扣码仅供用户购买雷神加速器时长套餐使用，不可兑换现金！</p>
+                </li>
+                <li class="mar_b5">
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">3.获得折扣码的用户，直接在套餐购买页面填写折扣码购买！</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">4.折扣码有效期至2019年06月30日24时，仅限在有效期内使用，逾期作废，请尽快使用！</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">5.折扣码限用户本人使用，不可转让售卖！</p>
+                </li>
+                <li class="mar_b5">
+                    <p class="app-common_font">本次活动的最终解释权归上海雷神网络科技有限公司所有</p>
+                </li>
+            </ul>
+        </div>
+<!--        end 活动规则-->
+    </div>
+
+<!--    支付模块-->
+    <div class="app-pay_box flex_row_between">
+        <div><span class="app-pay_font">金额: <span>￥{{real_pay_price}}</span></span><span class="app-discount_font">(已减<span>{{youhui_price}}元</span>)</span></div>
+        <div @click="gotoRecharge" class="round_btn" style="padding: 4px 18px;font-size: 16px;">去支付</div>
+    </div>
+
+<!--    登录、注册、忘记密码PopUp-->
+    <van-popup position="right" v-model="show_dialog" style="width: 100%;height: 100%;background-color: #f2f2f2;">
+        <keep-alive>
+            <component :is="activComponent" @tologin="toLogin" @toregister="toRegister" @toforget="toForgetPwd" @already-login="alreadyLogin"></component>
+        </keep-alive>
+    </van-popup>
+
+<!--    充值PopUp-->
+    <van-popup position="bottom" v-model="show_recharge" :lazy-render="false" style="width: 100%;">
+        <recharge-dialog ref="to_recharge" :choosepriceinfo="choosePriceInfo" :commonzhekou="common_zhekou" @tologin="toLogin"></recharge-dialog>
+    </van-popup>
+
+<!--    兑奖PopUp-->
+    <van-popup position="right" v-model="show_reward" :lazy-render="false" style="width: 100%;height: 100%;">
+        <reward-dialog ref="to_reward"></reward-dialog>
+    </van-popup>
+</div>
+</body>
+</html>

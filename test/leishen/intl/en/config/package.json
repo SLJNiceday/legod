@@ -1,0 +1,238 @@
+{
+  "0__zh_CN": {
+    "package_id": 1,
+    "package_title": "海外会员",
+    "package_level": 200,
+    "package_is_recommend": 0,
+    "short_desc": 1,
+    "package_short_desc": "海外会员",
+    "package_desc": "",
+    "billing_type": 1,
+    "price_type": 1,
+    "include_region_codes": 0,
+    "exclude_region_codes": "",
+    "price": [
+      {
+        "price_id": 2,
+        "price_title": 720,
+        "price_num": 9,
+        "price_is_recommend": 0,
+        "price_order_num": 1,
+        "price_short_desc": 800,
+        "price_desc": 2300,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 3,
+        "price_title": 2160,
+        "price_num": "0.01",
+        "price_is_recommend": 0,
+        "price_order_num": 2,
+        "price_short_desc": "8折",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 4,
+        "price_title": 4320,
+        "price_num": 216,
+        "price_is_recommend": 0,
+        "price_order_num": 3,
+        "price_short_desc": "7折",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 5,
+        "price_title": 8760,
+        "price_num": "0.02",
+        "price_is_recommend": 1,
+        "price_order_num": 5,
+        "price_short_desc": "感恩节活动",
+        "price_desc": "充值抽奖",
+        "start_time": "",
+        "end_time": ""
+      }
+    ]
+  },
+  "0__en": {
+    "package_id": 1,
+    "package_title": "OverSeas VIP",
+    "package_level": 200,
+    "package_is_recommend": 0,
+    "short_desc": 1,
+    "package_short_desc": "OverSeas VIP",
+    "package_desc": "",
+    "billing_type": 1,
+    "price_type": 1,
+    "include_region_codes": 0,
+    "exclude_region_codes": "",
+    "price": [
+      {
+        "price_id": 2,
+        "price_title": 720,
+        "price_num": 9,
+        "price_is_recommend": 0,
+        "price_order_num": 1,
+        "price_short_desc": 800,
+        "price_desc": 2300,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 3,
+        "price_title": 2160,
+        "price_num": "0.01",
+        "price_is_recommend": 0,
+        "price_order_num": 2,
+        "price_short_desc": "8 OFF",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 4,
+        "price_title": 4320,
+        "price_num": 216,
+        "price_is_recommend": 0,
+        "price_order_num": 3,
+        "price_short_desc": "7 OFF",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 5,
+        "price_title": 8760,
+        "price_num": "0.02",
+        "price_is_recommend": 1,
+        "price_order_num": 5,
+        "price_short_desc": "ganen",
+        "price_desc": "充值抽奖",
+        "start_time": "",
+        "end_time": ""
+      }
+    ]
+  },
+  "1__zh_CN":{
+    "billing_type": 1,
+  "exclude_region_codes": "",
+  "include_region_codes": 1,
+  "package_desc": "",
+  "package_id": 2,
+  "package_is_recommend": 0,
+  "package_level": 200,
+  "package_short_desc": "随时可暂停",
+  "package_title": "超级会员",
+  "price": [
+    {
+      "end_time": "",
+      "price_desc": "0.078元/小时",
+      "price_id": 82,
+      "price_is_recommend": 0,
+      "price_num": 39,
+      "price_order_num": 30,
+      "price_short_desc": "原价：45元",
+      "price_title": 500,
+      "start_time": ""
+    },
+    {
+      "end_time": "",
+      "price_desc": "0.061元/小时",
+      "price_id": 69,
+      "price_is_recommend": 0,
+      "price_num": 49,
+      "price_order_num": 40,
+      "price_short_desc": "原价：60元",
+      "price_title": 800,
+      "start_time": ""
+    },
+    {
+      "end_time": "",
+      "price_desc": "0.043元/小时",
+      "price_id": 70,
+      "price_is_recommend": 1,
+      "price_num": 99,
+      "price_order_num": 50,
+      "price_short_desc": "折扣价：139元",
+      "price_title": 2300,
+      "start_time": ""
+    },
+    {
+      "end_time": "",
+      "price_desc": "0.031元/小时",
+      "price_id": 72,
+      "price_is_recommend": 0,
+      "price_num": 279,
+      "price_order_num": 70,
+      "price_short_desc": "原价：618元",
+      "price_title": 9000,
+      "start_time": ""
+    }
+  ],
+  "price_type": 1,
+  "short_desc": 999
+  },
+  "1__en": {
+    "package_id": 2,
+    "package_title": "计时",
+    "package_level": 201,
+    "package_is_recommend": 0,
+    "short_desc": 1,
+    "package_short_desc": "计时",
+    "package_desc": "",
+    "billing_type": 1,
+    "price_type": 1,
+    "include_region_codes": 1,
+    "exclude_region_codes": "",
+    "price": [
+      {
+        "price_id": 7,
+        "price_title": "720小时",
+        "price_num": 60,
+        "price_is_recommend": 0,
+        "price_order_num": 2,
+        "price_short_desc": 4500,
+        "price_desc": 4500,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 8,
+        "price_title": "2160小时",
+        "price_num": 162,
+        "price_is_recommend": 0,
+        "price_order_num": 3,
+        "price_short_desc": "10% oFF",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 9,
+        "price_title": "4320小时",
+        "price_num": 288,
+        "price_is_recommend": 0,
+        "price_order_num": 4,
+        "price_short_desc": "20% OFF",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      },
+      {
+        "price_id": 10,
+        "price_title": "8760小时",
+        "price_num": 298,
+        "price_is_recommend": 1,
+        "price_order_num": 5,
+        "price_short_desc": "4.1 OFF",
+        "price_desc": null,
+        "start_time": "",
+        "end_time": ""
+      }
+    ]
+  }
+}
